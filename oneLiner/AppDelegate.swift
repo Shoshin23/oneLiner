@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        notification.fireDate = NSDate(timeIntervalSinceNow: 2)
 //        
 //        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        //END COMMENT.
 
         
         UINavigationBar.appearance().barTintColor = UIColor(red:0.957, green:0.925, blue:0.055, alpha:1.0)
