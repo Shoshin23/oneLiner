@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30EF73861CDE863400423339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73851CDE863400423339 /* AppDelegate.swift */; };
 		30EF738B1CDE863400423339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF73891CDE863400423339 /* Main.storyboard */; };
 		30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30EF738C1CDE863400423339 /* oneLiner.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30EF73821CDE863300423339 /* oneLiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneLiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73851CDE863400423339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30EF738A1CDE863400423339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				30EF73851CDE863400423339 /* AppDelegate.swift */,
 				30EF73891CDE863400423339 /* Main.storyboard */,
+				30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */,
 				30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */,
 				30EF738F1CDE863400423339 /* Assets.xcassets */,
 				30EF73911CDE863400423339 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */,
 				30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */,
+				30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */,
 				30EF73861CDE863400423339 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +492,7 @@
 				30EF73AF1CDE863400423339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30EF73B01CDE863400423339 /* Build configuration list for PBXNativeTarget "oneLinerTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +501,7 @@
 				30EF73B21CDE863400423339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30EF73B31CDE863400423339 /* Build configuration list for PBXNativeTarget "oneLinerUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +510,7 @@
 				30EF73B51CDE863400423339 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

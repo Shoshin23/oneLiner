@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
 //        
 //        let notification:UILocalNotification = UILocalNotification()
 //        
@@ -64,6 +64,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
     }
+    
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        print(notificationSettings.types.rawValue)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        if (application.applicationState == UIApplicationState.Inactive) {
+            print("You're here from the push notification, aren't you?")
+            self.redirectToView(notification.userInfo)
+        }
+    }
+    
+        func redirectToView(userInfo:[NSObject: AnyObject]!) {
+        if userInfo != nil {
+            if let pageType = userInfo!["TYPE"] {
+                if pageType as! String == "SharePage" {
+                
+                }
+                
+            }
+        }
+    
+    }
+    
+
 
     // MARK: - Core Data stack
 }
