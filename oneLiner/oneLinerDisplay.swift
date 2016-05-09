@@ -59,6 +59,8 @@ class oneLinerDisplay: UITableViewController {
     
 
     
+    var chosenOption:String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +93,7 @@ class oneLinerDisplay: UITableViewController {
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!)
         
-        let optionChosen = currentCell?.textLabel?.text!
+        self.chosenOption = currentCell?.textLabel?.text!
         
         //print(optionChosen!)
 //        
@@ -109,7 +111,8 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath!)
         cell?.accessoryType = .Checkmark
         //print("Cell selected:\(indexPath?.row)")
-        scheduleNotifications("Helloe World!", alertBody: (optionChosen!))
+        scheduleNotifications("Helloe World!", alertBody: (self.chosenOption))
+        NSUserDefaults.standardUserDefaults().setValue(self.chosenOption, forKey: "chosenOption")
 
         
         
@@ -122,6 +125,13 @@ class oneLinerDisplay: UITableViewController {
         //print("Cell de-selected:\(indexPath)")
 
     }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "showVC" {
+//            let destinationVC = segue.destinationViewController as! ShareViewController
+//            destinationVC.chosenOption = self.chosenOption
+//        }
+//    }
     
     
 
