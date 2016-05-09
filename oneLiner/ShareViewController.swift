@@ -16,6 +16,7 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
         print("In shareVC.")
+        view.backgroundColor = UIColor.whiteColor()
 
         self.chosenOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption")!
         
