@@ -85,6 +85,9 @@ class oneLinerDisplay: UITableViewController {
         
         cell.textLabel?.text = oneLiners[indexPath.row]
         
+        
+        
+        
         return cell
     }
     
