@@ -31,36 +31,43 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pick a topic:" prompt="1Liner" id="WyH-mE-XwS"/>
+                    <connections>
+                        <segue destination="7tC-3S-2GN" kind="show" identifier="showVC" id="VLB-yh-hcb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcO-In-7tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1969" y="243"/>
         </scene>
         <!--Share View Controller-->
-        <scene sceneID="P2i-GZ-zkm">
+        <scene sceneID="dRw-h8-cFr">
             <objects>
-                <viewController id="Gjm-4p-nad" customClass="ShareViewController" customModule="oneLiner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShareViewController" id="7tC-3S-2GN" customClass="ShareViewController" customModule="oneLiner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5cV-v0-ISy"/>
-                        <viewControllerLayoutGuide type="bottom" id="EIX-rO-4o0"/>
+                        <viewControllerLayoutGuide type="top" id="zhs-yh-t4F"/>
+                        <viewControllerLayoutGuide type="bottom" id="WRh-k6-o3B"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Q0t-JU-gjS">
+                    <view key="view" contentMode="scaleToFill" id="TKn-Ea-5PK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IT WORKED. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14j-2g-5Ib">
-                                <rect key="frame" x="251" y="86" width="99" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoF-a3-rQL">
+                                <rect key="frame" x="272" y="198" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="shareVC"/>
                     </view>
+                    <connections>
+                        <outlet property="ping" destination="CoF-a3-rQL" id="Y06-k9-RBK"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2UX-Pn-UlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCS-Ym-gTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2623" y="243"/>
+            <point key="canvasLocation" x="2673" y="234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZOh-v4-DF9">

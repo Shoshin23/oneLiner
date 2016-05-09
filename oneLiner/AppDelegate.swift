@@ -79,20 +79,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
         func redirectToView(userInfo:[NSObject: AnyObject]!) {
+            
+            var redirectViewController:UIViewController!
         if userInfo != nil {
             if let pageType = userInfo!["TYPE"] {
                 if pageType as! String == "SharePage" {
+                    redirectViewController = ShareViewController()
                 
+                }
+                
+//                if redirectViewController != nil {
+//                    if self.window != nil && self.window?.rootViewController != nil {
+                       let rootVC = self.window?.rootViewController as! UINavigationController
+//                        
+                       let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let shareVC = mainStoryboard.instantiateViewControllerWithIdentifier("ShareViewController") as! ShareViewController
+                
+                        rootVC.pushViewController(shareVC, animated: true)
+//                        if rootVC is UINavigationController {
+//                            (rootVC as! UINavigationController).pushViewController(redirectViewController, animated: true)
+//                        } else {
+//                            rootVC?.presentViewController(redirectViewController, animated: false, completion: nil)
+//                        }
+                    }
                 }
                 
             }
         }
-    
-    }
+
     
 
 
     // MARK: - Core Data stack
-}
+
 
 
