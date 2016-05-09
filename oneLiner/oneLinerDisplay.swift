@@ -126,12 +126,7 @@ class oneLinerDisplay: UITableViewController {
 
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showVC" {
-//            let destinationVC = segue.destinationViewController as! ShareViewController
-//            destinationVC.chosenOption = self.chosenOption
-//        }
-//    }
+
     
     
 

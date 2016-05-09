@@ -10,15 +10,17 @@ import UIKit
 
 class ShareViewController: UIViewController {
     
-    @IBOutlet var ping: UILabel!
     
+    @IBOutlet var optionChosen: UILabel!
     var chosenOption:AnyObject = ""
     override func viewDidLoad() {
          super.viewDidLoad()
         print("In shareVC.")
-self.chosenOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption")!
+
+        self.chosenOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption")!
         
-        print(chosenOption)
+        self.optionChosen.text = chosenOption as? String
+        
     }
 
 }

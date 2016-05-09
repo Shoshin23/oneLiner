@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         func redirectToView(userInfo:[NSObject: AnyObject]!) {
             
-            var redirectViewController:UIViewController!
+            let redirectViewController:UIViewController!
         if userInfo != nil {
             if let pageType = userInfo!["TYPE"] {
                 if pageType as! String == "SharePage" {
