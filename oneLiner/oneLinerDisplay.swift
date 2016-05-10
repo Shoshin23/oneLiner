@@ -44,13 +44,39 @@ class oneLinerDisplay: UITableViewController {
         //UIApplication.sharedApplication().registerUserNotificationSettings()
     //}
     
+    var dateFire:NSDate = NSDate()
+    
+    func setTime() {
+        
+        
+        var calendar:NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        var dateFire = NSDate()
+        
+        var fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
+        
+        if (fireComponents.hour >= 12) {
+            
+            dateFire = dateFire.dateByAddingTimeInterval(86400)
+            fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
+            
+        }
+        
+        fireComponents.hour = 11
+        fireComponents.minute = 9
+        
+        self.dateFire = calendar.dateFromComponents(fireComponents)!
+        
+        
+        
+        
+    }
+    
     
     
     func scheduleNotifications(alertTitle:String, alertBody:String) {
         
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.fireDate = self.dateFire
         localNotification.alertTitle = alertTitle
         localNotification.alertBody = alertBody
         localNotification.userInfo = ["TYPE":"SharePage"]
@@ -59,7 +85,8 @@ class oneLinerDisplay: UITableViewController {
     
 
     
-    var chosenOption:String!
+    var chosenOption:Int!
+    var deselectedIndexPath:NSIndexPath = NSIndexPath()
     
     
     override func viewDidLoad() {
@@ -84,9 +111,16 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         cell.textLabel?.text = oneLiners[indexPath.row]
+        let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         
-        
-        
+        if getOption == indexPath.row {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
+       
+
         
         return cell
     }
@@ -94,30 +128,13 @@ class oneLinerDisplay: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
         
-        let currentCell = tableView.cellForRowAtIndexPath(indexPath!)
-        
-        self.chosenOption = currentCell?.textLabel?.text!
-        
-        //print(optionChosen!)
-//        
-//        if let cell = tableView.cellForRowAtIndexPath(indexPath!){
-//        if cell.accessoryType == .Checkmark {
-//            cell.accessoryType = .None
-//            checked = true
-//        }
-//        else {
-//            cell.accessoryType = .Checkmark
-//            checked = false
-//        }
-//        }
-        
         let cell = tableView.cellForRowAtIndexPath(indexPath!)
         cell?.accessoryType = .Checkmark
-        //print("Cell selected:\(indexPath?.row)")
-        scheduleNotifications("Helloe World!", alertBody: (self.chosenOption))
+        print("Cell selected:\(indexPath?.row)")
+        scheduleNotifications("click to share", alertBody: "Elaka!")
+        self.chosenOption = indexPath?.row
         NSUserDefaults.standardUserDefaults().setValue(self.chosenOption, forKey: "chosenOption")
-
-        
+        tableView.reloadData()
         
     }
     
@@ -125,7 +142,8 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         cell?.accessoryType = .None
-        //print("Cell de-selected:\(indexPath)")
+        print("Cell de-selected:\(indexPath.row)")
+//        tableView.reloadData()
 
     }
     
