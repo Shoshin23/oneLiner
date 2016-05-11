@@ -49,7 +49,7 @@ class oneLinerDisplay: UITableViewController {
     func setTime() {
         
         
-        var calendar:NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let calendar:NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         var dateFire = NSDate()
         
         var fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
@@ -76,7 +76,7 @@ class oneLinerDisplay: UITableViewController {
     func scheduleNotifications(alertTitle:String, alertBody:String) {
         
         let localNotification = UILocalNotification()
-        localNotification.fireDate = self.dateFire
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
         localNotification.alertTitle = alertTitle
         localNotification.alertBody = alertBody
         localNotification.userInfo = ["TYPE":"SharePage"]
@@ -101,7 +101,7 @@ class oneLinerDisplay: UITableViewController {
     
     
     
-    let oneLiners = ["Motivation", "Health Tips", "Fun Facts", "Startup Quotes", "Jokes", "Buddhist Quotes", "Shower Thoughts", "Pop Quiz", "Emojis", "Random"]
+    let oneLiners = Topics.oneLiners
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oneLiners.count
