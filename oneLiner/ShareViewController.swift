@@ -18,6 +18,7 @@ class ShareViewController: UIViewController {
     @IBOutlet var sourceName: UILabel!
     var postDict = [AnyObject]()
     
+    @IBOutlet var shareContent: UITextView!
     //obtain selectedIndex here 
     var selectedIndex:Int!
     
@@ -41,8 +42,17 @@ class ShareViewController: UIViewController {
             while let rest = enumerator.nextObject() as? FDataSnapshot {
 //                print(rest.value)
                 self.postDict.append(rest.value)
+                
             }
+            
+            if self.postDict.count == 2 { // Wait for the data to be downloaded. 
+            
             self.sourceName.text = self.postDict[1] as? String
+            self.shareContent.text = self.postDict[0] as? String
+            }
+            
+            
+
             
 
 //            let postKey = snapshot.key
