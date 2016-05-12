@@ -8,12 +8,59 @@
 
 import UIKit
 import Firebase
+import Social
 
 
 class ShareViewController: UIViewController {
     
     
     @IBOutlet var optionChosen: UILabel!
+    
+    
+    @IBOutlet var facebookButtonDesign: UIButton!
+    
+    @IBOutlet var twitterButtonDesign: UIButton!
+    
+    
+    @IBAction func facebookShare(sender: UIButton) {
+        
+        guard
+            SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) else {
+                let alertMessage = UIAlertController(title: "Facebook Unavailable", message: "You havent registered your Facebook Account. Please go to settings > Facebook, to create one.", preferredStyle: .Alert)
+                
+                alertMessage.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                self.presentViewController(alertMessage, animated: true, completion: nil)
+                return
+        }
+        
+        let tweetComposer = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        let tweetMessage = (postDict[0] as? String)! + " #oneLiner"
+        tweetComposer.setInitialText(tweetMessage)
+        self.presentViewController(tweetComposer, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
+    @IBAction func twitterShare(sender: UIButton) {
+        
+        guard
+            SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) else {
+                let alertMessage = UIAlertController(title: "Twitter Unavailable", message: "You havent registered your Twitter Account. Please go to settings > Twitter, to create one.", preferredStyle: .Alert)
+                
+                alertMessage.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                self.presentViewController(alertMessage, animated: true, completion: nil)
+                return
+        }
+        
+        let tweetComposer = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        let tweetMessage = (postDict[0] as? String)! + "#oneLiner"
+        tweetComposer.setInitialText(tweetMessage)
+        self.presentViewController(tweetComposer, animated: true, completion: nil)
+        
+        
+    }
     
     @IBOutlet var sourceName: UILabel!
     var postDict = [AnyObject]()
@@ -45,7 +92,7 @@ class ShareViewController: UIViewController {
                 
             }
             
-            if self.postDict.count == 2 { // Wait for the data to be downloaded. 
+            if self.postDict.count == 2 { // Wait for the data to be downloaded.
             
             self.sourceName.text = self.postDict[1] as? String
             self.shareContent.text = self.postDict[0] as? String

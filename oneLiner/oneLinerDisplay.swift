@@ -7,45 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 
 class oneLinerDisplay: UITableViewController {
     
+   //Declarations
     
     var checked:Bool = false
-    
-   // func setupNotification() {
-        
-//        let NotificationSettings:UIUserNotificationType = UIUserNotificationType([.Alert, .Sound, .Badge])
-//        
-//        let justInform = UIMutableUserNotificationAction()
-//        
-//        justInform.identifier = "JustInform"
-//        justInform.title = "Thanks, that was awesome!"
-//        justInform.activationMode = UIUserNotificationActivationMode.Background
-//        justInform.authenticationRequired = false
-//        
-//        let ShareAction = UIMutableUserNotificationAction()
-//        ShareAction.identifier = "Share"
-//        ShareAction.title = "Share this 1Liner."
-//        ShareAction.activationMode = UIUserNotificationActivationMode.Foreground //ShareAction needs the app in the foreground.
-//        ShareAction.authenticationRequired = false
-//        
-//        let actionsArry = NSArray(objects: ShareAction, justInform)
-//        
-//        
-//        let shareActionCategory = UIMutableUserNotificationCategory()
-//        
-//        shareActionCategory.identifier = "ShareActionCategory"
-//        shareActionCategory.setActions(actionsArry as? [UIUserNotificationAction], forContext: .Minimal)
-//        let categoriesForSettings = NSSet(object: shareActionCategory)
-//        
-//        let newNotifcationSettings = UIUserNotificationSettings(forTypes: NotificationSettings, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
-        //UIApplication.sharedApplication().registerUserNotificationSettings()
-    //}
-    
     var dateFire:NSDate = NSDate()
+    var chosenOption:Int!
+    var deselectedIndexPath:NSIndexPath = NSIndexPath()
     
+
+    //methods
     func setTime() {
         
         
@@ -54,15 +29,15 @@ class oneLinerDisplay: UITableViewController {
         
         var fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
         
-        if (fireComponents.hour >= 12) {
+        if (fireComponents.hour >= 7) {
             
             dateFire = dateFire.dateByAddingTimeInterval(86400)
             fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
             
         }
         
-        fireComponents.hour = 11
-        fireComponents.minute = 9
+        fireComponents.hour = 7
+        fireComponents.minute = 0
         
         self.dateFire = calendar.dateFromComponents(fireComponents)!
         
@@ -76,7 +51,7 @@ class oneLinerDisplay: UITableViewController {
     func scheduleNotifications(alertTitle:String, alertBody:String) {
         
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 15)
         localNotification.alertTitle = alertTitle
         localNotification.alertBody = alertBody
         localNotification.userInfo = ["TYPE":"SharePage"]
@@ -84,9 +59,6 @@ class oneLinerDisplay: UITableViewController {
     }
     
 
-    
-    var chosenOption:Int!
-    var deselectedIndexPath:NSIndexPath = NSIndexPath()
     
     
     override func viewDidLoad() {
@@ -143,7 +115,6 @@ class oneLinerDisplay: UITableViewController {
         
         cell?.accessoryType = .None
         print("Cell de-selected:\(indexPath.row)")
-//        tableView.reloadData()
 
     }
     
