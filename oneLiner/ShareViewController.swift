@@ -35,6 +35,7 @@ class ShareViewController: UIViewController {
         
         let tweetComposer = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         let tweetMessage = (postDict[0] as? String)! + " #oneLiner"
+        print(postDict[0])
         tweetComposer.setInitialText(tweetMessage)
         self.presentViewController(tweetComposer, animated: true, completion: nil)
         

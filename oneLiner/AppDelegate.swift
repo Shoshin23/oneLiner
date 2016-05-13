@@ -19,15 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
-//        
-//        let notification:UILocalNotification = UILocalNotification()
-//        
-//        notification.category = "Education"
-//        notification.alertTitle = "One Liner Jokes"
-//        notification.alertBody = "Knock knock. Who's there? Your BAAP."
-//        notification.fireDate = NSDate(timeIntervalSinceNow: 2)
-//        
-//        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        let notification:UILocalNotification = UILocalNotification()
+        
+        notification.category = "Education"
+        notification.alertTitle = "One Liner Jokes"
+        notification.alertBody = "Knock knock. Who's there? Your BAAP."
+        notification.fireDate = NSDate(timeIntervalSinceNow: 20)
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
         //END COMMENT.
 
         

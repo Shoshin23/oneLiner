@@ -15,13 +15,25 @@ class oneLinerDisplay: UITableViewController {
    //Declarations
     
     var checked:Bool = false
-    var dateFire:NSDate = NSDate()
     var chosenOption:Int!
     var deselectedIndexPath:NSIndexPath = NSIndexPath()
+    let oneLiners = Topics.oneLiners
+
     
 
-    //methods
-    func setTime() {
+    //Methods
+    
+        
+        
+    
+        
+        
+        
+    
+    
+    
+    
+    func scheduleNotifications(timeOfDay:String, alertTitle:String, alertBody:String) {
         
         
         let calendar:NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
@@ -29,36 +41,51 @@ class oneLinerDisplay: UITableViewController {
         
         var fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
         
-        if (fireComponents.hour >= 7) {
+        if(timeOfDay == "M") {
+        
+        if (fireComponents.hour >= 8) {
             
             dateFire = dateFire.dateByAddingTimeInterval(86400)
             fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
             
         }
         
-        fireComponents.hour = 7
+        fireComponents.hour = 8
         fireComponents.minute = 0
+        }
         
-        self.dateFire = calendar.dateFromComponents(fireComponents)!
+        else if(timeOfDay == "E") {
+            
+        if (fireComponents.hour >= 19) {
+            
+            dateFire = dateFire.dateByAddingTimeInterval(86400)
+            fireComponents = calendar.components([NSCalendarUnit.Day, .Month, .Year, .Hour, .Minute],fromDate:dateFire)
+            
+        }
         
-        
-        
-        
+        fireComponents.hour = 18
+        fireComponents.minute = 05
     }
     
-    
-    
-    func scheduleNotifications(alertTitle:String, alertBody:String) {
+        dateFire = calendar.dateFromComponents(fireComponents)!
         
         let localNotification = UILocalNotification()
-        localNotification.fireDate = NSDate(timeIntervalSinceNow: 15)
+        localNotification.fireDate = dateFire
         localNotification.alertTitle = alertTitle
         localNotification.alertBody = alertBody
+        localNotification.repeatInterval = NSCalendarUnit.Day
         localNotification.userInfo = ["TYPE":"SharePage"]
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     
 
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+
+        print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
+    }
     
     
     override func viewDidLoad() {
@@ -67,13 +94,14 @@ class oneLinerDisplay: UITableViewController {
         self.tableView.delegate = self
         
         self.tableView.allowsMultipleSelection = false
-
+        scheduleNotifications("M",alertTitle: "Hello World", alertBody: "The World is Yours!")
+        scheduleNotifications("E", alertTitle: "Evening Time", alertBody: "Evening is here!")
+        
         
     }
     
     
     
-    let oneLiners = Topics.oneLiners
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oneLiners.count
@@ -102,8 +130,6 @@ class oneLinerDisplay: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath!)
         cell?.accessoryType = .Checkmark
-        print("Cell selected:\(indexPath?.row)")
-        scheduleNotifications("click to share", alertBody: "Elaka!")
         self.chosenOption = indexPath?.row
         NSUserDefaults.standardUserDefaults().setValue(self.chosenOption, forKey: "chosenOption")
         tableView.reloadData()
