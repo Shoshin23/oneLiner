@@ -19,17 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil))
-        
-        let notification:UILocalNotification = UILocalNotification()
-        
-        notification.category = "Education"
-        notification.alertTitle = "One Liner Jokes"
-        notification.alertBody = "Knock knock. Who's there? Your BAAP."
-        notification.fireDate = NSDate(timeIntervalSinceNow: 20)
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        //END COMMENT.
-
+//        
+//        let notification:UILocalNotification = UILocalNotification()
+//        
+//        notification.category = "Education"
+//        notification.alertTitle = "One Liner Jokes"
+//        notification.alertBody = "Knock knock. Who's there? Your BAAP."
+//        notification.fireDate = NSDate(timeIntervalSinceNow: 20)
+//        
+//        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+//        //END COMMENT.
+//
         
         UINavigationBar.appearance().barTintColor = UIColor(red:0.957, green:0.925, blue:0.055, alpha:1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -39,8 +39,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  NSFontAttributeName:barFont]
         
         }
+        
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
+        
         return true
     }
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        print("Done Fetching")
+        completionHandler(UIBackgroundFetchResult.NewData)
+        getData()
+    }
+    
+    
+    func getData() -> Void {
+        
+        
+        
+        
+    }
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -67,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        print(notificationSettings.types.rawValue)
+       // print(notificationSettings.types.rawValue)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

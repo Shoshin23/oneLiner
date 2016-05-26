@@ -18,21 +18,17 @@ class oneLinerDisplay: UITableViewController {
     var chosenOption:Int!
     var deselectedIndexPath:NSIndexPath = NSIndexPath()
     let oneLiners = Topics.oneLiners
+    
+    
+    //Flags
+    var isDataFetched:Bool = false      //Check if data was fetched before or not.
 
     
 
     //Methods
     
-        
-        
     
-        
-        
-        
-    
-    
-    
-    
+    //Schedule Notifications based on the time of day. 8 AM in the morning and 6 in the evening.
     func scheduleNotifications(timeOfDay:String, alertTitle:String, alertBody:String) {
         
         
@@ -64,7 +60,7 @@ class oneLinerDisplay: UITableViewController {
         }
         
         fireComponents.hour = 18
-        fireComponents.minute = 05
+        fireComponents.minute = 00
     }
     
         dateFire = calendar.dateFromComponents(fireComponents)!
@@ -73,7 +69,7 @@ class oneLinerDisplay: UITableViewController {
         localNotification.fireDate = dateFire
         localNotification.alertTitle = alertTitle
         localNotification.alertBody = alertBody
-        localNotification.repeatInterval = NSCalendarUnit.Day
+//        localNotification.repeatInterval = NSCalendarUnit.Day
         localNotification.userInfo = ["TYPE":"SharePage"]
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
@@ -83,8 +79,9 @@ class oneLinerDisplay: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-
+        print("ChosenOption at viewWillAppear:")
         print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
+       
     }
     
     
@@ -94,8 +91,14 @@ class oneLinerDisplay: UITableViewController {
         self.tableView.delegate = self
         
         self.tableView.allowsMultipleSelection = false
-        scheduleNotifications("M",alertTitle: "Hello World", alertBody: "The World is Yours!")
-        scheduleNotifications("E", alertTitle: "Evening Time", alertBody: "Evening is here!")
+        //print(Topics.oneLiners)
+        
+        //Cancel existing notifications. Might help in firing multiple
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+
+        scheduleNotifications("M",alertTitle: Topics.oneLiners[0], alertBody: "The World is Yours!")
+        scheduleNotifications("E", alertTitle: Topics.oneLiners[0], alertBody: "Evening is here!")
+       
         
         
     }
@@ -126,12 +129,35 @@ class oneLinerDisplay: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
         
+        //Local Variables
+        
+        let indexPath = tableView.indexPathForSelectedRow
         let cell = tableView.cellForRowAtIndexPath(indexPath!)
+        let optionChecked = indexPath?.row
+
+        
         cell?.accessoryType = .Checkmark
-        self.chosenOption = indexPath?.row
-        NSUserDefaults.standardUserDefaults().setValue(self.chosenOption, forKey: "chosenOption")
+       
+        // fetch data from Firebase as soon as someone picks a topic and store it locally using Realm?
+
+        let postRef = DataService.ds.REF_POSTS.childByAppendingPath(Topics.oneLiners[optionChecked!])
+        
+        postRef.observeEventType(.Value, withBlock: { snapshot in
+            
+        //print(snapshot.value)
+            let enumerator = snapshot.children
+            while let rest = enumerator.nextObject() as? FDataSnapshot {
+                                print(rest.value)
+               
+                
+            }
+        
+        })
+        
+        
+         //shouldnt be here. Everytime i click on a topic, notifications are scheduled. Instead, it has to be done just once. When the app is loaded.
+        NSUserDefaults.standardUserDefaults().setValue(optionChecked, forKey: "chosenOption")
         tableView.reloadData()
         
     }
@@ -140,7 +166,7 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         cell?.accessoryType = .None
-        print("Cell de-selected:\(indexPath.row)")
+        //print("Cell de-selected:\(indexPath.row)")
 
     }
     
