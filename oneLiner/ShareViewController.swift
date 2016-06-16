@@ -81,24 +81,24 @@ class ShareViewController: UIViewController {
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
         
         
-        let postRef = DataService.ds.REF_POSTS.childByAppendingPath(Topics.oneLiners[selectedIndex])
+//        let postRef = DataService.ds.REF_POSTS.childByAppendingPath(Topics.oneLiners[selectedIndex])
+//        
+//        postRef.observeEventType(.Value, withBlock: { snapshot in
+//            
+////            print(snapshot.childrenCount)
+//            let enumerator = snapshot.children
+//            while let rest = enumerator.nextObject() as? FDataSnapshot {
+////                print(rest.value)
+//                self.postDict.append(rest.value)
+//                
+//            }
+//            
+//            if self.postDict.count == 2 { // Wait for the data to be downloaded.
+//            
+//            self.sourceName.text = self.postDict[1] as? String
+//            self.shareContent.text = self.postDict[0] as? String
+//            }
         
-        postRef.observeEventType(.Value, withBlock: { snapshot in
-            
-//            print(snapshot.childrenCount)
-            let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? FDataSnapshot {
-//                print(rest.value)
-                self.postDict.append(rest.value)
-                
-            }
-            
-            if self.postDict.count == 2 { // Wait for the data to be downloaded.
-            
-            self.sourceName.text = self.postDict[1] as? String
-            self.shareContent.text = self.postDict[0] as? String
-            }
-            
             
 
             
@@ -108,7 +108,7 @@ class ShareViewController: UIViewController {
 //            
 //            let post = [postKey:postValue]
 //            self.postDict = (post[Topics.oneLiners[self.selectedIndex]]! as? Dictionary<String, AnyObject!>)!
-        })
+        //})
 
        
    

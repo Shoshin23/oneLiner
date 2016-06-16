@@ -5,6 +5,9 @@ use_frameworks!
 
 target 'oneLiner' do
 pod 'Firebase', '>= 2.5.1'
+pod 'Firebase/Core'
+pod 'Firebase/Messaging'
+pod 'Firebase/Database'
 end
 
 target 'oneLinerTests' do
