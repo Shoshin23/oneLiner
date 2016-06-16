@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		300459A11CE3940200D90B5A /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300459A01CE3940200D90B5A /* Topics.swift */; };
+		3014BBDA1D13458200256A2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3014BBD91D13458200256A2E /* GoogleService-Info.plist */; };
 		30789CA51CE11B4000E4B878 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789CA41CE11B4000E4B878 /* DataService.swift */; };
 		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3451CE110E600BA1D78 /* MaterialView.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		300459A01CE3940200D90B5A /* Topics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
+		3014BBD91D13458200256A2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30789CA41CE11B4000E4B878 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		30EF73841CDE863300423339 /* oneLiner */ = {
 			isa = PBXGroup;
 			children = (
+				3014BBD91D13458200256A2E /* GoogleService-Info.plist */,
 				3004599F1CE391D700D90B5A /* New Group */,
 				30789CA31CE11B3300E4B878 /* Services */,
 				30789CA21CE1199600E4B878 /* view */,
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30EF73931CDE863400423339 /* LaunchScreen.storyboard in Resources */,
+				3014BBDA1D13458200256A2E /* GoogleService-Info.plist in Resources */,
 				30EF73901CDE863400423339 /* Assets.xcassets in Resources */,
 				30EF738B1CDE863400423339 /* Main.storyboard in Resources */,
 			);
