@@ -21,6 +21,16 @@ class oneLinerDisplay: UITableViewController {
     var deselectedIndexPath:NSIndexPath = NSIndexPath()
     let oneLiners = Topics.oneLiners
     
+    //Local methods
+    @IBAction func showAlert() {
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet", preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -37,6 +47,9 @@ class oneLinerDisplay: UITableViewController {
         self.tableView.allowsMultipleSelection = false
         
         //check for network connection. Else throw an error. 
+        if Reachability.isConnectedToNetwork() == false {
+           showAlert()
+        }
         
         
     }

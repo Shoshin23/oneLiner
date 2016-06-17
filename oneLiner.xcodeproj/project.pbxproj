@@ -12,6 +12,7 @@
 		30789CA51CE11B4000E4B878 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789CA41CE11B4000E4B878 /* DataService.swift */; };
 		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3451CE110E600BA1D78 /* MaterialView.swift */; };
+		30D50BB51D145CAD00E878AD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D50BB41D145CAD00E878AD /* Reachability.swift */; };
 		30EF73861CDE863400423339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73851CDE863400423339 /* AppDelegate.swift */; };
 		30EF738B1CDE863400423339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF73891CDE863400423339 /* Main.storyboard */; };
 		30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30EF738C1CDE863400423339 /* oneLiner.xcdatamodeld */; };
@@ -46,6 +47,7 @@
 		30789CA41CE11B4000E4B878 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		30D50BB41D145CAD00E878AD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = ../Reachability.swift; sourceTree = "<group>"; };
 		30EF73821CDE863300423339 /* oneLiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneLiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73851CDE863400423339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30EF738A1CDE863400423339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				300459A01CE3940200D90B5A /* Topics.swift */,
+				30D50BB41D145CAD00E878AD /* Reachability.swift */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */,
 				30789CA51CE11B4000E4B878 /* DataService.swift in Sources */,
 				30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */,
+				30D50BB51D145CAD00E878AD /* Reachability.swift in Sources */,
 				30EF73861CDE863400423339 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
