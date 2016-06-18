@@ -23,7 +23,7 @@ class oneLinerDisplay: UITableViewController {
     
     //Local methods
     @IBAction func showAlert() {
-        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet.", preferredStyle: .Alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(defaultAction)
@@ -53,9 +53,6 @@ class oneLinerDisplay: UITableViewController {
         
         
     }
-    
-    
-    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oneLiners.count
@@ -90,8 +87,20 @@ class oneLinerDisplay: UITableViewController {
         
         cell?.accessoryType = .Checkmark
         
-        FIRMessaging.messaging().subscribeToTopic("/topics/\(self.oneLiners[optionChecked!])")
-        print("Subscribed to the topic. Send me PNs?")
+        let topic = oneLiners[optionChecked!].stringByReplacingOccurrencesOfString(" ", withString: "")
+        //print(topic)
+        
+        FIRMessaging.messaging().subscribeToTopic("/topics/\(topic)")
+        print("Subscribed to the \(topic). Send me PNs?")
+        
+        //fetch the previous topic from the existing NSUserDefaults
+        
+        let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
+        let previous_topic = self.oneLiners[getOption!].stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        //unsubcribe from the previous topic. 
+        FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(previous_topic)")
+        print("Unsubscribed from \(self.oneLiners[getOption!])")
         
     
          //shouldnt be here. Everytime i click on a topic, notifications are scheduled. Instead, it has to be done just once. When the app is loaded.
@@ -102,14 +111,6 @@ class oneLinerDisplay: UITableViewController {
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
         cell?.accessoryType = .None
-        //print("Cell de-selected:\(indexPath.row)")
-
-    }
-    
-
-    
-    
-
+        }
 }

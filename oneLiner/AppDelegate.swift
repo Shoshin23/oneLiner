@@ -15,9 +15,14 @@ import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
 
     var window: UIWindow?
     
+    
+    
+    
+
     func connectToFcm() {
         FIRMessaging.messaging().connectWithCompletion { (error) in
             if (error != nil) {
@@ -39,8 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Create the 'Share' Notification Category. Swipe right and I see 'Share'.
+
+        let notificationShare :UIMutableUserNotificationAction =
+            UIMutableUserNotificationAction()
+        notificationShare.identifier = "SHARE_IDENTIFIER"
+        notificationShare.title = "👍 Share" //some inspiration from the Quartz App. TODO: Find a way to make it new everyday.
+        notificationShare.destructive = false
+        notificationShare.activationMode = .Background
+        
+        //the 'Share Category'
+        
+        let notificationCategory: UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "SHARE_CATEGORY"
+        notificationCategory.setActions([notificationShare], forContext: .Minimal)
+        
+        
+        
+        
         let settings: UIUserNotificationSettings =
-        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: NSSet(array: [notificationCategory]) as? Set<UIUserNotificationCategory>)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
@@ -76,6 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
                 if let message = alert["message"] as? NSString {
+                    
+                    //save the payload to a global variable. Call it in ShareViewController.
                     print(message)
                 }
             } else if let alert = aps["alert"] as? NSString {
@@ -123,10 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         }
 
-    
-
-
-    // MARK: - Core Data stack
 
 
 
