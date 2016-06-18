@@ -84,43 +84,28 @@
                                     <constraint firstItem="jbi-LS-sJC" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" constant="56" id="w8M-Nw-k2o"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fod-Tq-sGy">
-                                <rect key="frame" x="124" y="490" width="67" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Facebook"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornderRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="facebookShare:" destination="7tC-3S-2GN" eventType="touchUpInside" id="DAK-xk-muR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAV-PS-qkD">
-                                <rect key="frame" x="317" y="490" width="48" height="30"/>
-                                <state key="normal" title="Twitter"/>
-                                <connections>
-                                    <action selector="twitterShare:" destination="7tC-3S-2GN" eventType="touchUpInside" id="NSc-kf-fHW"/>
-                                </connections>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ern-ax-mQR">
+                                <rect key="frame" x="280" y="492" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="YTa-Pt-Odv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <state key="normal" title="📢"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" identifier="shareVC"/>
                         <constraints>
                             <constraint firstItem="pwa-OY-Y38" firstAttribute="centerX" secondItem="TKn-Ea-5PK" secondAttribute="centerX" id="4AK-O8-bep"/>
-                            <constraint firstAttribute="trailing" secondItem="RAV-PS-qkD" secondAttribute="trailing" constant="235" id="DiW-am-uYL"/>
-                            <constraint firstItem="fod-Tq-sGy" firstAttribute="baseline" secondItem="RAV-PS-qkD" secondAttribute="baseline" id="OSH-q9-Xzx"/>
+                            <constraint firstItem="Ern-ax-mQR" firstAttribute="centerX" secondItem="pwa-OY-Y38" secondAttribute="centerX" id="CGr-rT-dll"/>
                             <constraint firstItem="pwa-OY-Y38" firstAttribute="centerY" secondItem="TKn-Ea-5PK" secondAttribute="centerY" id="Ofn-tz-HdV"/>
-                            <constraint firstItem="fod-Tq-sGy" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" id="aU4-2I-Lm5"/>
-                            <constraint firstItem="fod-Tq-sGy" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="bottom" constant="41" id="j1W-Eh-D11"/>
+                            <constraint firstItem="WRh-k6-o3B" firstAttribute="top" secondItem="Ern-ax-mQR" secondAttribute="bottom" constant="68" id="Qub-v7-aXV"/>
+                            <constraint firstItem="Ern-ax-mQR" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="bottom" constant="43" id="uAA-oJ-05W"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="facebookButtonDesign" destination="fod-Tq-sGy" id="3vd-xB-7zQ"/>
                         <outlet property="optionChosen" destination="chD-yU-lS1" id="o3L-nt-sai"/>
                         <outlet property="shareContent" destination="jbi-LS-sJC" id="6kd-id-gUH"/>
-                        <outlet property="twitterButtonDesign" destination="RAV-PS-qkD" id="5x4-7i-fdm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCS-Ym-gTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
