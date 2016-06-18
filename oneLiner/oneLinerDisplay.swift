@@ -32,6 +32,32 @@ class oneLinerDisplay: UITableViewController {
     }
     
     
+        //Animate table method.
+        // ref: Appcoda tutorial
+    
+ func animateTable() {
+        self.tableView.reloadData()
+        
+        let cells = self.tableView.visibleCells
+        let tableHeight: CGFloat = self.tableView.bounds.size.height
+        
+        for i in cells {
+            let cell: UITableViewCell = i as UITableViewCell
+            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+        }
+        
+        var index = 0
+        
+        for a in cells {
+            let cell: UITableViewCell = a as UITableViewCell
+            UIView.animateWithDuration(1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransformMakeTranslation(0, 0);
+                }, completion: nil)
+            
+            index += 1
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
@@ -45,6 +71,7 @@ class oneLinerDisplay: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.allowsMultipleSelection = false
+        animateTable()
         
         //check for network connection. Else throw an error. 
         if Reachability.isConnectedToNetwork() == false {

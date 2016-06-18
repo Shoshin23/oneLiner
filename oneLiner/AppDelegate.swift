@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let redirectViewController:UIViewController!
         if userInfo != nil {
-            if let pageType = userInfo!["aps"] {
+            if userInfo!["aps"] != nil {
                     redirectViewController = ShareViewController()
                     
                 
