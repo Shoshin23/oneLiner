@@ -95,13 +95,14 @@ class oneLinerDisplay: UITableViewController {
         
         //fetch the previous topic from the existing NSUserDefaults
         
+        if(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") != nil){
         let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         let previous_topic = self.oneLiners[getOption!].stringByReplacingOccurrencesOfString(" ", withString: "")
         
         //unsubcribe from the previous topic. 
         FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(previous_topic)")
         print("Unsubscribed from \(self.oneLiners[getOption!])")
-        
+        }
     
          //shouldnt be here. Everytime i click on a topic, notifications are scheduled. Instead, it has to be done just once. When the app is loaded.
         NSUserDefaults.standardUserDefaults().setValue(optionChecked, forKey: "chosenOption")

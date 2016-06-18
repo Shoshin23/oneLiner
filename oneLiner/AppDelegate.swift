@@ -34,8 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func tokenRefreshNotificaiton(notification: NSNotification) {
+        if (FIRInstanceID.instanceID().token() != nil) {
         let refreshedToken = FIRInstanceID.instanceID().token()!
-        print("InstanceID token: \(refreshedToken)")
+            print("InstanceID token: \(refreshedToken)")
+
+        }
         
         // Connect to FCM since connection may have failed when attempted before having a token.
         connectToFcm()
@@ -107,10 +110,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(alert)
             }
         }
+        
+        redirectToView(userInfo)
     }
     
     
     
+    func redirectToView(userInfo:[NSObject: AnyObject]!) {
+        
+        let redirectViewController:UIViewController!
+        if userInfo != nil {
+            if let pageType = userInfo!["aps"] {
+                    redirectViewController = ShareViewController()
+                    
+                
+                
+                //                if redirectViewController != nil {
+                //                    if self.window != nil && self.window?.rootViewController != nil {
+                let rootVC = self.window?.rootViewController as! UINavigationController
+                //
+                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let shareVC = mainStoryboard.instantiateViewControllerWithIdentifier("ShareViewController") as! ShareViewController
+                
+                rootVC.pushViewController(shareVC, animated: true)
+                //                        if rootVC is UINavigationController {
+                //                            (rootVC as! UINavigationController).pushViewController(redirectViewController, animated: true)
+                //                        } else {
+                //                            rootVC?.presentViewController(redirectViewController, animated: false, completion: nil)
+                //                        }
+            }
+        }
+        
+    }
     
     
     func applicationDidBecomeActive(application: UIApplication) {
