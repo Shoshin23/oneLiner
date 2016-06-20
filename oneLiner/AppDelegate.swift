@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    
+    var Massage: NSString?
     
     
 
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let settings: UIUserNotificationSettings =
-        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: NSSet(array: [notificationCategory]) as? Set<UIUserNotificationCategory>)
+        UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories:[notificationCategory])
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
@@ -82,10 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().titleTextAttributes =
                 [NSForegroundColorAttributeName:UIColor.blackColor(),
                  NSFontAttributeName:barFont]
+            
         
         }
-        
-        
         
         return true
     }
@@ -98,19 +97,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         print("%@", userInfo)
+        //print(userInfo["aps"]!["alert"]!)
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
                 if let message = alert["message"] as? NSString {
                     
                     //save the payload to a global variable. Call it in ShareViewController.
-                    print(message)
+                    //print(message)
                 }
             } else if let alert = aps["alert"] as? NSString {
-                print(alert)
+                print("This is alert and not a message \(alert)")
+                self.Massage = alert
+                
+                //NSUserDefaults.standardUserDefaults().setValue(Massage!, forKey: "payload")
+                
+
             }
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("myNotif", object: nil, userInfo: userInfo as [NSObject : AnyObject])
         
+        
+        completionHandler(.NewData)
         redirectToView(userInfo)
     }
     
@@ -125,19 +133,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 
                 
-                //                if redirectViewController != nil {
-                //                    if self.window != nil && self.window?.rootViewController != nil {
-                let rootVC = self.window?.rootViewController as! UINavigationController
+                                let rootVC = self.window?.rootViewController as! UINavigationController
                 //
                 let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let shareVC = mainStoryboard.instantiateViewControllerWithIdentifier("ShareViewController") as! ShareViewController
                 
                 rootVC.pushViewController(shareVC, animated: true)
-                //                        if rootVC is UINavigationController {
-                //                            (rootVC as! UINavigationController).pushViewController(redirectViewController, animated: true)
-                //                        } else {
-                //                            rootVC?.presentViewController(redirectViewController, animated: false, completion: nil)
-                //                        }
             }
         }
         
@@ -146,6 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         connectToFcm()
+        print("This is from application did become active \(Massage)")
     }
     
     func applicationDidEnterBackground(application: UIApplication) {

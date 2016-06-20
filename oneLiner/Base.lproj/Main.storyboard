@@ -91,6 +91,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="📢"/>
+                                <connections>
+                                    <action selector="shareButton:" destination="7tC-3S-2GN" eventType="touchUpInside" id="0n1-Px-J99"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
