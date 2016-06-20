@@ -34,11 +34,23 @@ class ShareViewController: UIViewController {
         
     }
     
+    @IBAction func showAlert() {
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet.", preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
 
     }
+    
     
     
     override func viewWillDisappear(animated: Bool) {
@@ -53,10 +65,14 @@ class ShareViewController: UIViewController {
        // print("From shareVC, we can read the payload now! \(appDel.Massage!)")
         view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
         
+        if Reachability.isConnectedToNetwork() == false {
+            showAlert()
+        }
+        
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
         self.shareContent.text = appDel.payload! as String
-    
+        
         
     }
     

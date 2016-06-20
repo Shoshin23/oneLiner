@@ -13,6 +13,7 @@
 		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3451CE110E600BA1D78 /* MaterialView.swift */; };
 		30D50BB51D145CAD00E878AD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D50BB41D145CAD00E878AD /* Reachability.swift */; };
+		30E4B9691D18646F006DD20B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4B9681D18646F006DD20B /* SweetAlert.swift */; };
 		30EF73861CDE863400423339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73851CDE863400423339 /* AppDelegate.swift */; };
 		30EF738B1CDE863400423339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF73891CDE863400423339 /* Main.storyboard */; };
 		30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30EF738C1CDE863400423339 /* oneLiner.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		30D50BB41D145CAD00E878AD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = ../Reachability.swift; sourceTree = "<group>"; };
+		30E4B9681D18646F006DD20B /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		30EF73821CDE863300423339 /* oneLiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneLiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73851CDE863400423339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30EF738A1CDE863400423339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		3004599F1CE391D700D90B5A /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				30E4B9681D18646F006DD20B /* SweetAlert.swift */,
 				300459A01CE3940200D90B5A /* Topics.swift */,
 				30D50BB41D145CAD00E878AD /* Reachability.swift */,
 			);
@@ -273,6 +276,7 @@
 				TargetAttributes = {
 					30EF73811CDE863300423339 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = P9S59S549S;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -392,6 +396,7 @@
 			files = (
 				300459A11CE3940200D90B5A /* Topics.swift in Sources */,
 				30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */,
+				30E4B9691D18646F006DD20B /* SweetAlert.swift in Sources */,
 				30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */,
 				30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */,
 				30789CA51CE11B4000E4B878 /* DataService.swift in Sources */,
@@ -542,10 +547,13 @@
 			baseConfigurationReference = 34EC9FFE6BFA8288A05E1359 /* Pods-oneLiner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = oneLiner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotusbee.oneLiner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -554,10 +562,13 @@
 			baseConfigurationReference = 6C9E058828EF254786632AAC /* Pods-oneLiner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = oneLiner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotusbee.oneLiner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

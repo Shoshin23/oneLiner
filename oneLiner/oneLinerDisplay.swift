@@ -120,6 +120,10 @@ class oneLinerDisplay: UITableViewController {
         FIRMessaging.messaging().subscribeToTopic("/topics/\(topic)")
         print("Subscribed to the \(topic). Send me PNs?")
         
+        SweetAlert().showAlert("Subscribed to \(topic)", subTitle: "You'll get your daily 1Liners at 8 AM and 6 PM everyday!", style: AlertStyle.Success)
+
+        
+        
         //fetch the previous topic from the existing NSUserDefaults
         
         if(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") != nil){

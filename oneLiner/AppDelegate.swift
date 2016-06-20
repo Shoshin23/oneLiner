@@ -93,20 +93,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // Print message ID.
-        print("Message ID: \(userInfo["gcm.message_id"]!)")
+       // print("Message ID: \(userInfo["gcm.message_id"]!)")
         
         // Print full message.
-        print("%@", userInfo)
+        //print("%@", userInfo)
         //print(userInfo["aps"]!["alert"]!)
         
         if let aps = userInfo["aps"] as? NSDictionary {
-            if let alert = aps["alert"] as? NSDictionary {
-                if let message = alert["message"] as? NSString {
-                    
-                    //save the payload to a global variable. Call it in ShareViewController.
-                    //print(message)
-                }
-            } else if let alert = aps["alert"] as? NSString {
+            if (aps["alert"] as? NSDictionary) != nil {
+             if let alert = aps["alert"] as? NSString {
                 print("This is alert and not a message \(alert)")
                 self.payload = alert
                 
@@ -115,7 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("myNotif", object: nil, userInfo: userInfo as [NSObject : AnyObject])
+        }
+
         
         
         completionHandler(.NewData)
@@ -147,7 +143,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         connectToFcm()
-        //print("This is from application did become active \(payload)")
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
