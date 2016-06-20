@@ -26,8 +26,8 @@ class ShareViewController: UIViewController {
     
     
     @IBAction func shareButton(sender: UIButton) {
-        
-        let defaultText = "Hello world! #1Liner"
+    
+        let defaultText = appDel.payload! as String + " #1Liner" + "#" + Topics.oneLiners[selectedIndex]
         
         let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
         self.presentViewController(activityController, animated: true, completion: nil)
@@ -50,11 +50,12 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
         print("In shareVC.")
-        print("From shareVC, we can read the payload now! \(appDel.Massage!)")
+       // print("From shareVC, we can read the payload now! \(appDel.Massage!)")
         view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
         
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
+        self.shareContent.text = appDel.payload! as String
     
         
     }

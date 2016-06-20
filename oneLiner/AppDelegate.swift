@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var Massage: NSString?
+    var payload: NSString?
     
     
 
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else if let alert = aps["alert"] as? NSString {
                 print("This is alert and not a message \(alert)")
-                self.Massage = alert
+                self.payload = alert
                 
                 //NSUserDefaults.standardUserDefaults().setValue(Massage!, forKey: "payload")
                 
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         connectToFcm()
-        print("This is from application did become active \(Massage)")
+        //print("This is from application did become active \(payload)")
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
