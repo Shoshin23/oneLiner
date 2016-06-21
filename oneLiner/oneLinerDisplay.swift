@@ -88,6 +88,8 @@ class oneLinerDisplay: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
+        cell.textLabel?.font = UIFont(name: "Avenir-Light", size: 24.0)
+        
         cell.textLabel?.text = oneLiners[indexPath.row]
         let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         
