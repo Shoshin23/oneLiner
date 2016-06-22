@@ -6,6 +6,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="ard-ZR-Gr2">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f0W-i1-Z9c" customClass="WalkthroughPageViewController" customModule="oneLiner" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ltY-9z-bO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1978" y="-427"/>
+        </scene>
         <!--Pick a topic:-->
         <scene sceneID="dzg-SQ-kVc">
             <objects>
@@ -39,6 +47,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcO-In-7tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1969" y="243"/>
+        </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="xr1-rR-usT">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="0wB-My-JtP" customClass="WalkthroughContentViewController" customModule="oneLiner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qmB-RW-O2E"/>
+                        <viewControllerLayoutGuide type="bottom" id="bKS-WE-nhz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MVV-Ft-vBW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="page1" translatesAutoresizingMaskIntoConstraints="NO" id="4TR-4I-5WI">
+                                <rect key="frame" x="185" y="147" width="230" height="420"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rLO-Gn-sEO">
+                                <rect key="frame" x="281" y="563" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEK-vR-uc0">
+                                <rect key="frame" x="541" y="562" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="close:" destination="0wB-My-JtP" eventType="touchUpInside" id="Lc9-2o-lL5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You pick a topic you like." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-LP-2FK">
+                                <rect key="frame" x="185" y="39" width="230" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="B6Z-4o-aQi"/>
+                                    <constraint firstAttribute="width" constant="230" id="TWd-z1-lcR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.92549019607843142" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iuo-LP-2FK" firstAttribute="trailing" secondItem="4TR-4I-5WI" secondAttribute="trailing" id="8j5-88-OGT"/>
+                            <constraint firstItem="iuo-LP-2FK" firstAttribute="top" secondItem="qmB-RW-O2E" secondAttribute="bottom" constant="19" id="BNp-0k-6XF"/>
+                            <constraint firstItem="4TR-4I-5WI" firstAttribute="top" secondItem="iuo-LP-2FK" secondAttribute="bottom" constant="40" id="I7i-4w-CbP"/>
+                            <constraint firstItem="iuo-LP-2FK" firstAttribute="centerX" secondItem="MVV-Ft-vBW" secondAttribute="centerX" id="Og5-6j-MLU"/>
+                            <constraint firstItem="rLO-Gn-sEO" firstAttribute="bottom" secondItem="bKS-WE-nhz" secondAttribute="top" id="Y3Q-fM-Kus"/>
+                            <constraint firstItem="bKS-WE-nhz" firstAttribute="top" secondItem="4TR-4I-5WI" secondAttribute="bottom" constant="33" id="YlL-cT-fxl"/>
+                            <constraint firstItem="rLO-Gn-sEO" firstAttribute="centerX" secondItem="4TR-4I-5WI" secondAttribute="centerX" id="dri-QL-0WR"/>
+                            <constraint firstItem="iuo-LP-2FK" firstAttribute="leading" secondItem="4TR-4I-5WI" secondAttribute="leading" id="mUG-vh-ZnB"/>
+                            <constraint firstItem="bKS-WE-nhz" firstAttribute="top" secondItem="hEK-vR-uc0" secondAttribute="bottom" constant="8" symbolic="YES" id="tir-9c-4FR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hEK-vR-uc0" secondAttribute="trailing" constant="7" id="x5U-SI-toA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="4TR-4I-5WI" id="qcj-bu-iDZ"/>
+                        <outlet property="contentLabel" destination="iuo-LP-2FK" id="GTk-54-xZf"/>
+                        <outlet property="forwardButton" destination="hEK-vR-uc0" id="43D-MU-DMn"/>
+                        <outlet property="pageControl" destination="rLO-Gn-sEO" id="feh-nd-RFz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="slB-h6-Uqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2619" y="-427"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="dRw-h8-cFr">
@@ -134,4 +203,7 @@
             <point key="canvasLocation" x="1157" y="243"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="page1" width="326" height="678"/>
+    </resources>
 </document>

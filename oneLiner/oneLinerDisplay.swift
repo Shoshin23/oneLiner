@@ -66,6 +66,21 @@ class oneLinerDisplay: UITableViewController {
        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let hasViewedWalkthrough = defaults.boolForKey("hasViewedWalkthrough")
+        if hasViewedWalkthrough {
+            return
+        }
+        if let pageViewController =
+            storyboard?.instantiateViewControllerWithIdentifier("WalkthroughController")
+                as? WalkthroughPageViewController {
+            presentViewController(pageViewController, animated: true, completion: nil)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +110,7 @@ class oneLinerDisplay: UITableViewController {
         
         if getOption == indexPath.row {
             cell.accessoryType = .Checkmark
+            cell.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
         }
         else {
             cell.accessoryType = .None
@@ -115,6 +131,8 @@ class oneLinerDisplay: UITableViewController {
 
         
         cell?.accessoryType = .Checkmark
+        cell!.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
+
         
         let topic = oneLiners[optionChecked!].stringByReplacingOccurrencesOfString(" ", withString: "")
         //print(topic)
