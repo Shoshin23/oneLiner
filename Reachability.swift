@@ -6,8 +6,8 @@
 //  Copyright © 2016 Karthik Kannan. All rights reserved.
 //
 
-//Helps in checking network connections throughout the project.
-// Refer to this answer: http://stackoverflow.com/questions/30743408/check-for-internet-connection-in-swift-2-ios-9
+//Helps in checking network connections throughout the project.http://stackoverflow.com/questions/30743408/check-for-internet-connection-in-swift-2-ios-9
+// Refer to this answer: 
 
 //
 

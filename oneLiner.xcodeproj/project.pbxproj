@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		300459A11CE3940200D90B5A /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300459A01CE3940200D90B5A /* Topics.swift */; };
-		3014BBDA1D13458200256A2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3014BBD91D13458200256A2E /* GoogleService-Info.plist */; };
 		304386591D1ABBC500D0802C /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */; };
 		3043865B1D1AC14600D0802C /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */; };
 		30789CA51CE11B4000E4B878 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789CA41CE11B4000E4B878 /* DataService.swift */; };
@@ -23,6 +22,7 @@
 		30EF739E1CDE863400423339 /* oneLinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF739D1CDE863400423339 /* oneLinerTests.swift */; };
 		30EF73A91CDE863400423339 /* oneLinerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73A81CDE863400423339 /* oneLinerUITests.swift */; };
 		30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */; };
+		30F10EE21D1BB7E900E972CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F10EE11D1BB7E900E972CE /* GoogleService-Info.plist */; };
 		6212BA0D719D8547DD48AB8A /* Pods_oneLiner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A3AFD32EED0BFC8B8C9EF1 /* Pods_oneLiner.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,14 +45,13 @@
 
 /* Begin PBXFileReference section */
 		300459A01CE3940200D90B5A /* Topics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
-		3014BBD91D13458200256A2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughContentViewController.swift; path = ../WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughPageViewController.swift; path = ../WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		30789CA41CE11B4000E4B878 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		30D50BB41D145CAD00E878AD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = ../Reachability.swift; sourceTree = "<group>"; };
-		30EF73821CDE863300423339 /* oneLiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneLiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30EF73821CDE863300423339 /* 1Liner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1Liner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73851CDE863400423339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30EF738A1CDE863400423339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30EF738D1CDE863400423339 /* oneLiner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = oneLiner.xcdatamodel; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		30EF73A81CDE863400423339 /* oneLinerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oneLinerUITests.swift; sourceTree = "<group>"; };
 		30EF73AA1CDE863400423339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oneLinerDisplay.swift; sourceTree = "<group>"; };
+		30F10EE11D1BB7E900E972CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		34A3AFD32EED0BFC8B8C9EF1 /* Pods_oneLiner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oneLiner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EC9FFE6BFA8288A05E1359 /* Pods-oneLiner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneLiner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneLiner/Pods-oneLiner.debug.xcconfig"; sourceTree = "<group>"; };
 		6C9E058828EF254786632AAC /* Pods-oneLiner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneLiner.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneLiner/Pods-oneLiner.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		30EF73831CDE863300423339 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				30EF73821CDE863300423339 /* oneLiner.app */,
+				30EF73821CDE863300423339 /* 1Liner.app */,
 				30EF73991CDE863400423339 /* oneLinerTests.xctest */,
 				30EF73A41CDE863400423339 /* oneLinerUITests.xctest */,
 			);
@@ -166,7 +166,7 @@
 		30EF73841CDE863300423339 /* oneLiner */ = {
 			isa = PBXGroup;
 			children = (
-				3014BBD91D13458200256A2E /* GoogleService-Info.plist */,
+				30F10EE11D1BB7E900E972CE /* GoogleService-Info.plist */,
 				3004599F1CE391D700D90B5A /* New Group */,
 				30789CA31CE11B3300E4B878 /* Services */,
 				30789CA21CE1199600E4B878 /* view */,
@@ -228,7 +228,7 @@
 			);
 			name = oneLiner;
 			productName = oneLiner;
-			productReference = 30EF73821CDE863300423339 /* oneLiner.app */;
+			productReference = 30EF73821CDE863300423339 /* 1Liner.app */;
 			productType = "com.apple.product-type.application";
 		};
 		30EF73981CDE863400423339 /* oneLinerTests */ = {
@@ -321,8 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F10EE21D1BB7E900E972CE /* GoogleService-Info.plist in Resources */,
 				30EF73931CDE863400423339 /* LaunchScreen.storyboard in Resources */,
-				3014BBDA1D13458200256A2E /* GoogleService-Info.plist in Resources */,
 				30EF73901CDE863400423339 /* Assets.xcassets in Resources */,
 				30EF738B1CDE863400423339 /* Main.storyboard in Resources */,
 			);
@@ -555,7 +555,9 @@
 				INFOPLIST_FILE = oneLiner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotusbee.oneLiner;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = 1Liner;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -564,12 +566,14 @@
 			baseConfigurationReference = 6C9E058828EF254786632AAC /* Pods-oneLiner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Karthik Kannan (P9S59S549S)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Karthik Kannan (P9S59S549S)";
 				INFOPLIST_FILE = oneLiner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lotusbee.oneLiner;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = 1Liner;
+				PROVISIONING_PROFILE = "3ec78578-68eb-4a47-b78c-def2ae613af1";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -61,8 +61,9 @@ class oneLinerDisplay: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        print("ChosenOption at viewWillAppear:")
+        print("In viewWillAppear:")
         print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
+        animateTable()
        
     }
     
@@ -79,6 +80,7 @@ class oneLinerDisplay: UITableViewController {
                 as? WalkthroughPageViewController {
             presentViewController(pageViewController, animated: true, completion: nil)
         }
+        print("In viewDidAppear.")
     }
     
     

@@ -127,36 +127,36 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chosen Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chD-yU-lS1">
                                         <rect key="frame" x="90" y="8" width="172" height="56"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="fp1-ip-41G"/>
+                                            <constraint firstAttribute="height" constant="56" id="wgn-nf-mzd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jbi-LS-sJC">
-                                        <rect key="frame" x="56" y="93" width="240" height="128"/>
+                                        <rect key="frame" x="56" y="64" width="240" height="226"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="353" id="9Ab-8j-j3w"/>
-                                    <constraint firstItem="chD-yU-lS1" firstAttribute="centerX" secondItem="jbi-LS-sJC" secondAttribute="centerX" id="J8T-nY-tZk"/>
-                                    <constraint firstItem="chD-yU-lS1" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="topMargin" id="NGN-Oc-ISs"/>
-                                    <constraint firstAttribute="bottom" secondItem="jbi-LS-sJC" secondAttribute="bottom" constant="77" id="QpY-MD-oCG"/>
-                                    <constraint firstAttribute="height" constant="298" id="WKS-4x-kH9"/>
-                                    <constraint firstItem="chD-yU-lS1" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" constant="90" id="dm8-PM-Jf7"/>
-                                    <constraint firstItem="jbi-LS-sJC" firstAttribute="top" secondItem="chD-yU-lS1" secondAttribute="bottom" constant="29" id="nlj-lO-e3F"/>
-                                    <constraint firstItem="chD-yU-lS1" firstAttribute="centerX" secondItem="pwa-OY-Y38" secondAttribute="centerX" id="qow-VW-hyL"/>
-                                    <constraint firstItem="jbi-LS-sJC" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" constant="56" id="w8M-Nw-k2o"/>
+                                    <constraint firstItem="chD-yU-lS1" firstAttribute="centerX" secondItem="jbi-LS-sJC" secondAttribute="centerX" id="1kl-IO-PPR"/>
+                                    <constraint firstItem="jbi-LS-sJC" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" constant="56" id="9lh-KG-YTN"/>
+                                    <constraint firstItem="chD-yU-lS1" firstAttribute="centerX" secondItem="pwa-OY-Y38" secondAttribute="centerX" id="AOp-v0-w7N"/>
+                                    <constraint firstAttribute="height" constant="298" id="C7o-Ej-FGL"/>
+                                    <constraint firstAttribute="bottom" secondItem="jbi-LS-sJC" secondAttribute="bottom" constant="8" id="GFM-gl-gKC"/>
+                                    <constraint firstItem="chD-yU-lS1" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="topMargin" id="WNF-LL-0aI"/>
+                                    <constraint firstAttribute="width" constant="353" id="i4b-wx-HBH"/>
+                                    <constraint firstItem="chD-yU-lS1" firstAttribute="leading" secondItem="pwa-OY-Y38" secondAttribute="leading" constant="90" id="m2x-yT-gka"/>
+                                    <constraint firstItem="jbi-LS-sJC" firstAttribute="top" secondItem="chD-yU-lS1" secondAttribute="bottom" id="r7o-WC-wjJ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ern-ax-mQR">
                                 <rect key="frame" x="280" y="492" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="YTa-Pt-Odv"/>
+                                    <constraint firstAttribute="width" constant="40" id="mmb-51-imM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <state key="normal" title="📢"/>
@@ -168,11 +168,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" identifier="shareVC"/>
                         <constraints>
-                            <constraint firstItem="pwa-OY-Y38" firstAttribute="centerX" secondItem="TKn-Ea-5PK" secondAttribute="centerX" id="4AK-O8-bep"/>
-                            <constraint firstItem="Ern-ax-mQR" firstAttribute="centerX" secondItem="pwa-OY-Y38" secondAttribute="centerX" id="CGr-rT-dll"/>
-                            <constraint firstItem="pwa-OY-Y38" firstAttribute="centerY" secondItem="TKn-Ea-5PK" secondAttribute="centerY" id="Ofn-tz-HdV"/>
-                            <constraint firstItem="WRh-k6-o3B" firstAttribute="top" secondItem="Ern-ax-mQR" secondAttribute="bottom" constant="68" id="Qub-v7-aXV"/>
-                            <constraint firstItem="Ern-ax-mQR" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="bottom" constant="43" id="uAA-oJ-05W"/>
+                            <constraint firstItem="WRh-k6-o3B" firstAttribute="top" secondItem="Ern-ax-mQR" secondAttribute="bottom" constant="68" id="BSQ-KK-KsN"/>
+                            <constraint firstItem="Ern-ax-mQR" firstAttribute="top" secondItem="pwa-OY-Y38" secondAttribute="bottom" constant="43" id="T4q-FD-dMv"/>
+                            <constraint firstItem="Ern-ax-mQR" firstAttribute="centerX" secondItem="pwa-OY-Y38" secondAttribute="centerX" id="hKM-WS-LfH"/>
+                            <constraint firstItem="pwa-OY-Y38" firstAttribute="centerY" secondItem="TKn-Ea-5PK" secondAttribute="centerY" id="lgU-9D-fgu"/>
+                            <constraint firstItem="pwa-OY-Y38" firstAttribute="centerX" secondItem="TKn-Ea-5PK" secondAttribute="centerX" id="neA-qA-v56"/>
                         </constraints>
                     </view>
                     <connections>

@@ -122,6 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         redirectToView(userInfo)
     }
     
+    func application(application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    {
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
+    }
     
     
     func redirectToView(userInfo:[NSObject: AnyObject]!) {
