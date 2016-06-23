@@ -32,8 +32,10 @@ class oneLinerDisplay: UITableViewController {
     }
     
     
-        //Animate table method.
-        // ref: Appcoda tutorial
+
+    
+        // Animate table method.
+        //  ref: Appcoda tutorial
     
  func animateTable() {
         self.tableView.reloadData()
@@ -94,7 +96,6 @@ class oneLinerDisplay: UITableViewController {
         if Reachability.isConnectedToNetwork() == false {
            showAlert()
         }
-        
         
     }
     

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "30EF73811CDE863300423339"
-               BuildableName = "oneLiner.app"
+               BuildableName = "1Liner.app"
                BlueprintName = "oneLiner"
                ReferencedContainer = "container:oneLiner.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30EF73811CDE863300423339"
-            BuildableName = "oneLiner.app"
+            BuildableName = "1Liner.app"
             BlueprintName = "oneLiner"
             ReferencedContainer = "container:oneLiner.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30EF73811CDE863300423339"
-            BuildableName = "oneLiner.app"
+            BuildableName = "1Liner.app"
             BlueprintName = "oneLiner"
             ReferencedContainer = "container:oneLiner.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "30EF73811CDE863300423339"
-            BuildableName = "oneLiner.app"
+            BuildableName = "1Liner.app"
             BlueprintName = "oneLiner"
             ReferencedContainer = "container:oneLiner.xcodeproj">
          </BuildableReference>

@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().titleTextAttributes =
                 [NSForegroundColorAttributeName:UIColor.blackColor(),
                  NSFontAttributeName:barFont]
-            
+                        
         
         }
         
