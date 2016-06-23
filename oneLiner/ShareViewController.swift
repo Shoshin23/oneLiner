@@ -24,14 +24,24 @@ class ShareViewController: UIViewController {
     var selectedIndex:Int!
     var appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
+    @IBAction func showAlert() {
+        let alertController = UIAlertController(title: "", message: "Your 1Liner is copied to the clipboard!", preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     @IBAction func shareButton(sender: UIButton) {
     
-        let defaultText = appDel.payload! as String + " #1Liner" + "#" + Topics.oneLiners[selectedIndex]
+        let defaultText = appDel.payload! as String + " #1Liner " + "#" + Topics.oneLiners[selectedIndex].stringByReplacingOccurrencesOfString(" ", withString: "")
         
         let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
         self.presentViewController(activityController, animated: true, completion: nil)
-        
+        UIPasteboard.generalPasteboard().string = appDel.payload as? String
     }
     
     override func viewWillAppear(animated: Bool) {
