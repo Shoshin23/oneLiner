@@ -9,8 +9,8 @@
 import UIKit
 
 class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
-    var pageContent = ["You pick a topic you like.", "And you get a line about it twice everyday. Once at 8 AM and 6 PM.", "You open the app only if you feel like sharing it."]
-    var pageImages = ["page1", "page2", "page3"]
+    var pageContent = ["Welcome to 1Liner, a simple app that sends you one line everyday about the things you like.","You pick a topic you like.", "And you get a line about it twice everyday. Once at 8 AM and 6 PM.", "You open the app only if you feel like sharing it."]
+    var pageImages = ["LaunchImage","page1", "page2", "page3"]
     
     func pageViewController(pageViewController: UIPageViewController,
                             viewControllerAfterViewController viewController:UIViewController) -> UIViewController? {

@@ -63,8 +63,8 @@ class oneLinerDisplay: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        print("In viewWillAppear:")
-        print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
+        //print("In viewWillAppear:")
+        //print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
         animateTable()
        
     }
@@ -82,22 +82,31 @@ class oneLinerDisplay: UITableViewController {
                 as? WalkthroughPageViewController {
             presentViewController(pageViewController, animated: true, completion: nil)
         }
-        print("In viewDidAppear.")
+        //print("In viewDidAppear.")
     }
     
     
+    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.allowsMultipleSelection = false
         animateTable()
         
-        //check for network connection. Else throw an error. 
+        let image = UIImage(named: "logo_small")
+        self.navigationItem.titleView = UIImageView(image: image)
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .ScaleAspectFit
+
+        
+        //check for network connection. Else throw an error.
         if Reachability.isConnectedToNetwork() == false {
-           showAlert()
+            showAlert()
         }
         
     }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return oneLiners.count

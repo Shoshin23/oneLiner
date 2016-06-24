@@ -26,8 +26,8 @@ class WalkthroughContentViewController: UIViewController {
         pageControl.currentPage = index
         
         switch index {
-        case 0...1: forwardButton.setTitle("", forState: UIControlState.Normal)
-        case 2: forwardButton.setTitle("DONE", forState: UIControlState.Normal)
+        case 0...2: forwardButton.setTitle("", forState: UIControlState.Normal)
+        case 3: forwardButton.setTitle("DONE", forState: UIControlState.Normal)
         default: break
         }
 
