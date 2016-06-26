@@ -60,8 +60,8 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
         print("In shareVC.")
-       // print("From shareVC, we can read the payload now! \(appDel.Massage!)")
-        view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
+        print("From shareVC, we can read the payload now! \(appDel.payload!)")
+       // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
         
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
