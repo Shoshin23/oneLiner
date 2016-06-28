@@ -11,7 +11,7 @@ import Foundation
 
 class Topics {
     
-    static let oneLiners = ["Motivation", "Health Tips", "Fun Facts", "Startup Quotes", "Jokes", "Mindfulness", "Shower Thoughts", "Pop Quiz", "Design", "Random"]
+    static let oneLiners = ["Motivation", "Fitness", "Fun Facts", "Startups", "Jokes", "Mindfulness", "Shower Thoughts", "Pop Quiz", "Design", "Random"]
     
     
 }

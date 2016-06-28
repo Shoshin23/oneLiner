@@ -98,6 +98,8 @@ class oneLinerDisplay: UITableViewController {
         self.navigationItem.titleView = UIImageView(image: image)
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         imageView.contentMode = .ScaleAspectFit
+        
+//        self.navigationController!.popViewControllerAnimated(true)
 
         
         //check for network connection. Else throw an error.

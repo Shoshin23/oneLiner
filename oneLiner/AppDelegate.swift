@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let message = alert["message"] as? NSString {
                     
                     //save the payload to a global variable. Call it in ShareViewController.
-                    //print(message)
+                    print("This is the message: \(message)")
                 }
             } else if let alert = aps["alert"] as? NSString {
                 print("This is alert and not a message \(alert)")

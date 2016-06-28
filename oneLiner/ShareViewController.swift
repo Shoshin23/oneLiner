@@ -9,11 +9,15 @@
 import UIKit
 import Firebase
 import Social
+import Spring
+
 
 
 class ShareViewController: UIViewController {
     
     
+    @IBOutlet var ModalTextView: SpringTextView!
+    @IBOutlet var ModalView: SpringView!
     @IBOutlet var optionChosen: UILabel!
     
     @IBOutlet var sourceName: UILabel!
@@ -62,12 +66,21 @@ class ShareViewController: UIViewController {
         print("In shareVC.")
         print("From shareVC, we can read the payload now! \(appDel.payload!)")
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
+        ModalView.animation = "slideUp"
+        ModalView.curve = "easeInOutQuart"
+        ModalView.duration = 2.3
+        ModalView.animate()
+        ModalTextView.animation = "slideUp"
+        ModalTextView.curve = "easeInOutQuart"
+        ModalTextView.duration = 2.3
+        ModalTextView.animate()
+        
+        
         
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
         self.shareContent.text = appDel.payload! as String
-    
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
     
     

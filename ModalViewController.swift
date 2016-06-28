@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Spring
+
 
 class ModalViewController: UIViewController {
     @IBAction func dismissVC(sender: UIButton) {
@@ -17,5 +19,17 @@ class ModalViewController: UIViewController {
             presentingViewController.dismissViewControllerAnimated(false, completion: nil)
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ModalView.animation = "slideUp"
+        ModalView.curve = "easeInOutQuart"
+        ModalView.duration = 2.3
+        ModalView.animate()
+        
 
+        
+    }
+
+    @IBOutlet var ModalView: SpringView!
 }
