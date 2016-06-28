@@ -138,11 +138,11 @@
                         <viewControllerLayoutGuide type="top" id="AWQ-GW-PKw"/>
                         <viewControllerLayoutGuide type="bottom" id="sZT-MO-nqu"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="BsT-7e-7ZY">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="BsT-7e-7ZY" customClass="MaterialView" customModule="_Liner" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-JU-EVk" customClass="SpringView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-JU-EVk" customClass="MaterialView" customModule="_Liner">
                                 <rect key="frame" x="157" y="87" width="287" height="426"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu4-5L-nzS">
@@ -201,7 +201,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ModalView" destination="iRi-JU-EVk" id="pkL-qX-oPL"/>
+                        <outlet property="aboutLabel" destination="pUj-qC-mtW" id="IXu-6x-jeg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaN-rT-wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +220,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-1q-ZMO" customClass="SpringView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-1q-ZMO" customClass="MaterialView" customModule="_Liner">
                                 <rect key="frame" x="167" y="123" width="267" height="373"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chosen Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-wa-l9H">
@@ -262,7 +262,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CZi-uT-wZ5" customClass="SpringTextView" customModule="Spring">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CZi-uT-wZ5">
                                 <rect key="frame" x="180" y="212" width="240" height="209"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
@@ -292,8 +292,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ModalTextView" destination="CZi-uT-wZ5" id="EGz-Pl-Mlv"/>
-                        <outlet property="ModalView" destination="cEP-1q-ZMO" id="mBS-or-82v"/>
                         <outlet property="optionChosen" destination="5UH-wa-l9H" id="0sn-G3-0gr"/>
                         <outlet property="shareContent" destination="CZi-uT-wZ5" id="u0a-gC-jYp"/>
                     </connections>

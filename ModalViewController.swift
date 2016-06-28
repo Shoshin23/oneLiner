@@ -11,6 +11,7 @@ import Spring
 
 
 class ModalViewController: UIViewController {
+    @IBOutlet var aboutLabel: UILabel!
     @IBAction func dismissVC(sender: UIButton) {
         
         let presentingViewController: UIViewController! = self.presentingViewController
@@ -22,14 +23,13 @@ class ModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ModalView.animation = "slideUp"
-        ModalView.curve = "easeInOutQuart"
-        ModalView.duration = 2.3
-        ModalView.animate()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ModalViewController.tapFunction(_:)))
+        aboutLabel.addGestureRecognizer(tap)
         
-
-        
+        print("In view did load of ModalVC!")
+    }
+    func tapFunction(sender:UITapGestureRecognizer) {
+        print("tap working")
     }
 
-    @IBOutlet var ModalView: SpringView!
 }
