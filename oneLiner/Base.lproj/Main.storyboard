@@ -154,9 +154,9 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Select a topic and recieve a 1Liner about it twice everyday. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n1I-Fd-22y">
-                                        <rect key="frame" x="14" y="88" width="265" height="179"/>
+                                        <rect key="frame" x="14" y="88" width="265" height="172"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello There." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lf-tT-Nzy">
@@ -165,12 +165,16 @@
                                         <color key="textColor" red="0.41162109375" green="0.41162109375" blue="0.41162109375" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made with 💛 by Lotus//Bee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUj-qC-mtW">
-                                        <rect key="frame" x="28" y="275" width="231" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYl-y3-V0A">
+                                        <rect key="frame" x="28" y="280" width="231" height="37"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="Made with 💛 by Lotus//Bee">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="aboutButton:" destination="bGG-qz-zqJ" eventType="touchUpInside" id="Jvj-JQ-qga"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -178,21 +182,20 @@
                                 </accessibility>
                                 <constraints>
                                     <constraint firstItem="n1I-Fd-22y" firstAttribute="leading" secondItem="iRi-JU-EVk" secondAttribute="leading" constant="14" id="0wv-Wf-Yci"/>
-                                    <constraint firstItem="pUj-qC-mtW" firstAttribute="top" secondItem="n1I-Fd-22y" secondAttribute="bottom" constant="8" id="2pT-rl-Ll1"/>
-                                    <constraint firstAttribute="trailing" secondItem="pUj-qC-mtW" secondAttribute="trailing" constant="28" id="8H6-Tl-C0b"/>
-                                    <constraint firstItem="pUj-qC-mtW" firstAttribute="top" secondItem="iRi-JU-EVk" secondAttribute="top" constant="275" id="9o3-ce-RSv"/>
-                                    <constraint firstItem="pUj-qC-mtW" firstAttribute="leading" secondItem="iRi-JU-EVk" secondAttribute="leading" constant="28" id="Lqf-Vb-zIw"/>
+                                    <constraint firstItem="Wu4-5L-nzS" firstAttribute="top" secondItem="eYl-y3-V0A" secondAttribute="bottom" constant="71" id="6p7-rw-2lw"/>
+                                    <constraint firstItem="eYl-y3-V0A" firstAttribute="top" secondItem="n1I-Fd-22y" secondAttribute="bottom" constant="20" id="KOH-Cc-zeI"/>
                                     <constraint firstItem="n1I-Fd-22y" firstAttribute="top" secondItem="iRi-JU-EVk" secondAttribute="top" constant="88" id="N7n-vX-ZlK"/>
                                     <constraint firstAttribute="trailing" secondItem="n1I-Fd-22y" secondAttribute="trailing" constant="8" id="Q6B-d4-3hs"/>
                                     <constraint firstItem="Wu4-5L-nzS" firstAttribute="leading" secondItem="iRi-JU-EVk" secondAttribute="leading" constant="117" id="TsO-0y-HMQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Wu4-5L-nzS" secondAttribute="trailing" constant="118" id="XKL-rA-dYn"/>
                                     <constraint firstAttribute="height" constant="426" id="XiI-wo-a0d"/>
+                                    <constraint firstAttribute="trailing" secondItem="eYl-y3-V0A" secondAttribute="trailing" constant="28" id="ZHM-xV-1md"/>
                                     <constraint firstItem="7lf-tT-Nzy" firstAttribute="top" secondItem="iRi-JU-EVk" secondAttribute="top" constant="47" id="gsg-eU-VXC"/>
                                     <constraint firstItem="n1I-Fd-22y" firstAttribute="top" secondItem="7lf-tT-Nzy" secondAttribute="bottom" constant="20" id="j0E-SA-v6K"/>
                                     <constraint firstAttribute="width" constant="287" id="ovo-zd-8oI"/>
                                     <constraint firstItem="7lf-tT-Nzy" firstAttribute="leading" secondItem="iRi-JU-EVk" secondAttribute="leading" constant="96" id="qAn-cS-nIz"/>
                                     <constraint firstItem="Wu4-5L-nzS" firstAttribute="top" secondItem="iRi-JU-EVk" secondAttribute="top" constant="388" id="rkH-hv-btW"/>
-                                    <constraint firstItem="Wu4-5L-nzS" firstAttribute="top" secondItem="pUj-qC-mtW" secondAttribute="bottom" constant="67" id="zF0-P0-BS3"/>
+                                    <constraint firstItem="eYl-y3-V0A" firstAttribute="leading" secondItem="iRi-JU-EVk" secondAttribute="leading" constant="28" id="y8f-mh-6zg"/>
                                     <constraint firstAttribute="trailing" secondItem="7lf-tT-Nzy" secondAttribute="trailing" constant="97" id="zLq-tG-TqV"/>
                                 </constraints>
                             </view>
@@ -203,9 +206,6 @@
                             <constraint firstItem="iRi-JU-EVk" firstAttribute="centerX" secondItem="BsT-7e-7ZY" secondAttribute="centerX" id="BF0-rq-C1S"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="aboutLabel" destination="pUj-qC-mtW" id="IXu-6x-jeg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaN-rT-wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
