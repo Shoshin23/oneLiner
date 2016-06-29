@@ -56,6 +56,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcO-In-7tj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Y8m-FT-apB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1969" y="243"/>
         </scene>
@@ -150,7 +151,8 @@
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <state key="normal" title="Okay"/>
                                         <connections>
-                                            <action selector="dismissVC:" destination="bGG-qz-zqJ" eventType="touchUpInside" id="blk-My-S4g"/>
+                                            <action selector="dismissVC:" destination="bGG-qz-zqJ" eventType="touchUpInside" id="QAb-xr-sqJ"/>
+                                            <segue destination="Y8m-FT-apB" kind="unwind" unwindAction="unwindFromSecondary:" id="Jxn-oz-U4B"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Select a topic and recieve a 1Liner about it twice everyday. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n1I-Fd-22y">
@@ -206,6 +208,9 @@
                             <constraint firstItem="iRi-JU-EVk" firstAttribute="centerX" secondItem="BsT-7e-7ZY" secondAttribute="centerX" id="BF0-rq-C1S"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="popUpView" destination="iRi-JU-EVk" id="E9e-QB-J6r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaN-rT-wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

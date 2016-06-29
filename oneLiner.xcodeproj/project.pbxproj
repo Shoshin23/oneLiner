@@ -11,6 +11,7 @@
 		304386591D1ABBC500D0802C /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */; };
 		3043865B1D1AC14600D0802C /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */; };
 		3065424A1D1C136E005004FF /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306542491D1C136E005004FF /* ModalViewController.swift */; };
+		30776B2C1D23BDF40067AFEA /* ModalPopovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30776B2B1D23BDF40067AFEA /* ModalPopovers.swift */; };
 		30789CA51CE11B4000E4B878 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789CA41CE11B4000E4B878 /* DataService.swift */; };
 		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3451CE110E600BA1D78 /* MaterialView.swift */; };
@@ -49,6 +50,7 @@
 		304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughContentViewController.swift; path = ../WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkthroughPageViewController.swift; path = ../WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		306542491D1C136E005004FF /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalViewController.swift; path = ../ModalViewController.swift; sourceTree = "<group>"; };
+		30776B2B1D23BDF40067AFEA /* ModalPopovers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalPopovers.swift; path = ../ModalPopovers.swift; sourceTree = "<group>"; };
 		30789CA41CE11B4000E4B878 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				300459A01CE3940200D90B5A /* Topics.swift */,
 				30D50BB41D145CAD00E878AD /* Reachability.swift */,
+				30776B2B1D23BDF40067AFEA /* ModalPopovers.swift */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				300459A11CE3940200D90B5A /* Topics.swift in Sources */,
+				30776B2C1D23BDF40067AFEA /* ModalPopovers.swift in Sources */,
 				30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */,
 				3043865B1D1AC14600D0802C /* WalkthroughPageViewController.swift in Sources */,
 				3065424A1D1C136E005004FF /* ModalViewController.swift in Sources */,

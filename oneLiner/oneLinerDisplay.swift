@@ -20,6 +20,8 @@ class oneLinerDisplay: UITableViewController {
     var chosenOption:Int!
     var deselectedIndexPath:NSIndexPath = NSIndexPath()
     let oneLiners = Topics.oneLiners
+    let dimLevel: CGFloat = 0.5
+    let dimSpeed: Double = 0.5
     
     //Local methods
     @IBAction func showAlert() {
@@ -32,8 +34,14 @@ class oneLinerDisplay: UITableViewController {
     }
     
     
-
-    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        dim(.In, alpha: dimLevel, speed: dimSpeed)
+//    }
+//    
+//    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
+//        dim(.Out, speed: dimSpeed)
+//    }
+//    
         // Animate table method.
         //  ref: Appcoda tutorial
     
