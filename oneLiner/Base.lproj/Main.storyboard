@@ -302,6 +302,7 @@
                     <connections>
                         <outlet property="optionChosen" destination="5UH-wa-l9H" id="0sn-G3-0gr"/>
                         <outlet property="shareContent" destination="CZi-uT-wZ5" id="u0a-gC-jYp"/>
+                        <outlet property="shareView" destination="cEP-1q-ZMO" id="owC-tJ-sce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCS-Ym-gTF" userLabel="First Responder" sceneMemberID="firstResponder"/>

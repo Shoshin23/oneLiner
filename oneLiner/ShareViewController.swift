@@ -18,6 +18,7 @@ class ShareViewController: UIViewController {
     
     @IBOutlet var optionChosen: UILabel!
     
+    @IBOutlet var shareView: UIView!
     @IBOutlet var sourceName: UILabel!
     var postDict = [AnyObject]()
     
@@ -61,9 +62,17 @@ class ShareViewController: UIViewController {
     
     override func viewDidLoad() {
          super.viewDidLoad()
-        print("In shareVC.")
-        print("From shareVC, we can read the payload now! \(appDel.payload!)")
+        //print("In shareVC.")
+       // print("From shareVC, we can read the payload now! \(appDel.payload!)")
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
+        shareView.layer.cornerRadius = 10
+        shareView.layer.borderColor = UIColor.blackColor().CGColor
+        shareView.layer.borderWidth = 0.25
+        shareView.layer.shadowColor = UIColor.blackColor().CGColor
+        shareView.layer.shadowOpacity = 0.8
+        shareView.layer.shadowRadius = 25
+        shareView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        shareView.layer.masksToBounds = false
 
         
         
