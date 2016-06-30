@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import FirebaseInstanceID
+import JDStatusBarNotification
 
 
 class oneLinerDisplay: UITableViewController {
@@ -161,6 +162,7 @@ class oneLinerDisplay: UITableViewController {
         
         FIRMessaging.messaging().subscribeToTopic("/topics/\(topic)")
         print("Subscribed to the \(topic). Send me PNs?")
+        JDStatusBarNotification.showWithStatus("Topic selected! You may now close the app. :)", dismissAfter: 4.0, styleName: "JDStatusBarStyleDark")
         
         //fetch the previous topic from the existing NSUserDefaults
         

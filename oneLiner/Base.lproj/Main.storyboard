@@ -80,49 +80,44 @@
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" red="0.17541763630319152" green="0.17541763630319152" blue="0.17541763630319152" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuo-LP-2FK">
-                                <rect key="frame" x="185" y="60" width="230" height="129"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="129" id="B6Z-4o-aQi"/>
-                                    <constraint firstAttribute="width" constant="230" id="TWd-z1-lcR"/>
-                                </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="You pick a topic you like.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="20" name="Avenir-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEK-vR-uc0">
-                                <rect key="frame" x="495" y="552" width="85" height="40"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <rect key="frame" x="498" y="563" width="82" height="37"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Let's Go!"/>
                                 <connections>
                                     <action selector="close:" destination="0wB-My-JtP" eventType="touchUpInside" id="Lc9-2o-lL5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yC9-ji-OCm">
+                                <rect key="frame" x="185" y="64" width="230" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="Npz-cL-beu"/>
+                                    <constraint firstAttribute="width" constant="230" id="QiS-p2-l3I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.92549019607843142" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="iuo-LP-2FK" firstAttribute="trailing" secondItem="4TR-4I-5WI" secondAttribute="trailing" id="8j5-88-OGT"/>
-                            <constraint firstItem="iuo-LP-2FK" firstAttribute="top" secondItem="qmB-RW-O2E" secondAttribute="bottom" constant="40" id="BNp-0k-6XF"/>
-                            <constraint firstItem="4TR-4I-5WI" firstAttribute="top" secondItem="iuo-LP-2FK" secondAttribute="bottom" constant="8" id="I7i-4w-CbP"/>
-                            <constraint firstItem="iuo-LP-2FK" firstAttribute="centerX" secondItem="MVV-Ft-vBW" secondAttribute="centerX" id="Og5-6j-MLU"/>
+                            <constraint firstItem="yC9-ji-OCm" firstAttribute="leading" secondItem="4TR-4I-5WI" secondAttribute="leading" id="8KV-QW-C1C"/>
+                            <constraint firstItem="rLO-Gn-sEO" firstAttribute="top" secondItem="4TR-4I-5WI" secondAttribute="bottom" constant="63" id="Bq7-zY-zJa"/>
+                            <constraint firstItem="4TR-4I-5WI" firstAttribute="top" secondItem="yC9-ji-OCm" secondAttribute="bottom" constant="8" symbolic="YES" id="Vu8-LE-jVn"/>
                             <constraint firstItem="rLO-Gn-sEO" firstAttribute="bottom" secondItem="bKS-WE-nhz" secondAttribute="top" id="Y3Q-fM-Kus"/>
                             <constraint firstItem="bKS-WE-nhz" firstAttribute="top" secondItem="4TR-4I-5WI" secondAttribute="bottom" constant="100" id="YlL-cT-fxl"/>
+                            <constraint firstItem="yC9-ji-OCm" firstAttribute="centerX" secondItem="MVV-Ft-vBW" secondAttribute="centerX" id="ZDE-BV-Qxc"/>
+                            <constraint firstItem="yC9-ji-OCm" firstAttribute="top" secondItem="qmB-RW-O2E" secondAttribute="bottom" constant="44" id="ai1-H2-8on"/>
                             <constraint firstItem="rLO-Gn-sEO" firstAttribute="centerX" secondItem="4TR-4I-5WI" secondAttribute="centerX" id="dri-QL-0WR"/>
-                            <constraint firstItem="iuo-LP-2FK" firstAttribute="leading" secondItem="4TR-4I-5WI" secondAttribute="leading" id="mUG-vh-ZnB"/>
-                            <constraint firstItem="bKS-WE-nhz" firstAttribute="top" secondItem="hEK-vR-uc0" secondAttribute="bottom" constant="8" symbolic="YES" id="tir-9c-4FR"/>
+                            <constraint firstItem="yC9-ji-OCm" firstAttribute="trailing" secondItem="4TR-4I-5WI" secondAttribute="trailing" id="kND-tY-Rig"/>
+                            <constraint firstItem="rLO-Gn-sEO" firstAttribute="top" secondItem="hEK-vR-uc0" secondAttribute="top" id="sVN-E4-dem"/>
+                            <constraint firstItem="bKS-WE-nhz" firstAttribute="top" secondItem="hEK-vR-uc0" secondAttribute="bottom" id="tir-9c-4FR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hEK-vR-uc0" secondAttribute="trailing" id="x5U-SI-toA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="contentImageView" destination="4TR-4I-5WI" id="qcj-bu-iDZ"/>
-                        <outlet property="contentLabel" destination="iuo-LP-2FK" id="GTk-54-xZf"/>
+                        <outlet property="contentLabel" destination="yC9-ji-OCm" id="UoI-Jx-1VF"/>
                         <outlet property="forwardButton" destination="hEK-vR-uc0" id="43D-MU-DMn"/>
                         <outlet property="pageControl" destination="rLO-Gn-sEO" id="feh-nd-RFz"/>
                     </connections>
@@ -156,7 +151,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Select a topic and recieve a 1Liner about it twice everyday. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n1I-Fd-22y">
-                                        <rect key="frame" x="14" y="88" width="265" height="172"/>
+                                        <rect key="frame" x="14" y="88" width="265" height="174"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -167,11 +162,36 @@
                                         <color key="textColor" red="0.41162109375" green="0.41162109375" blue="0.41162109375" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYl-y3-V0A">
-                                        <rect key="frame" x="28" y="280" width="231" height="37"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                                        <state key="normal" title="Made with 💛 by Lotus//Bee">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYl-y3-V0A">
+                                        <rect key="frame" x="28" y="282" width="231" height="35"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Made with ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.26632102705755378" blue="0.5581885804521276" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="Avenir-Light"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="💛">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.26632102705755378" blue="0.5581885804521276" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="AppleColorEmoji"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" by ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.26632102705755378" blue="0.5581885804521276" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="Avenir-Light"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="LotusBee">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.26632102705755378" blue="0.5581885804521276" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="14" name="Avenir-Light"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="aboutButton:" destination="bGG-qz-zqJ" eventType="touchUpInside" id="Jvj-JQ-qga"/>

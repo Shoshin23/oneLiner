@@ -9,6 +9,8 @@ pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'Firebase/Database'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+pod 'JDStatusBarNotification'
+
 
 end
 

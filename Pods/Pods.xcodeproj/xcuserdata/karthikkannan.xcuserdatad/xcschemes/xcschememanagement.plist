@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>JDStatusBarNotification.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-oneLiner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6A9F0764CD3FE51803A28D9C9B6EB468</key>
+		<key>35FAFEC4CC2C2EBECEE1C9DCC300D424</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF348C7FA27DA18DBAA4BBDDDC7D296C</key>
+		<key>B0E913F271BE919EE4CB6B18D75D6B6A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DAB82EFDC8D9AE733AB3501210D725FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
