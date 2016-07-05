@@ -47,7 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+       // print("in didfinish launching.")
+        
         //Create the 'Share' Notification Category. Swipe right and I see 'Share'.
+        
+        if launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] != nil {
+            print("From launchOptions push notification.")
+            payload =   launchOptions![UIApplicationLaunchOptionsRemoteNotificationKey] as? NSString
+            let rootVC = self.window?.rootViewController as! UINavigationController
+            let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let shareVC = mainStoryboard.instantiateViewControllerWithIdentifier("ShareViewController") as! ShareViewController
+            
+            rootVC.pushViewController(shareVC, animated: true)
+            
+        }
 
         let notificationShare :UIMutableUserNotificationAction =
             UIMutableUserNotificationAction()
@@ -67,9 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let settings: UIUserNotificationSettings =
         UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories:[notificationCategory])
-        application.registerUserNotificationSettings(settings)
-        application.registerForRemoteNotifications()
-        
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
         FIRApp.configure()  //Configure Firebase according to the new
         
         // Add observer for InstanceID token refresh callback.
@@ -93,11 +105,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // Print message ID.
-        print("Message ID: \(userInfo["gcm.message_id"]!)")
+       // print("Message ID: \(userInfo["gcm.message_id"]!)")
         
         // Print full message.
-        print("%@", userInfo)
+        //print("%@", userInfo)
         //print(userInfo["aps"]!["alert"]!)
+        
+        print("Called from didRecieveRemoteNotification.")
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
@@ -115,11 +129,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("myNotif", object: nil, userInfo: userInfo as [NSObject : AnyObject])
+
+        if(application.applicationState == .Inactive) {
+            print("application is inactive.")
+            redirectToView(userInfo)
+        }
         
+        if (application.applicationState == .Active) {
+            print("application in foreground")
+            redirectToView(userInfo)
+        }
+        
+        if (application.applicationState == .Background ) {
+            print("New data in.")
+            redirectToView(userInfo)
+        }
         
         completionHandler(.NewData)
-        redirectToView(userInfo)
+
+        
+//        redirectToView(userInfo)
     }
     
     func application(application: UIApplication,
