@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var payload: NSString?
+    var payloadSource: NSString?
     
     
 
@@ -105,13 +106,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // Print message ID.
-       // print("Message ID: \(userInfo["gcm.message_id"]!)")
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
         
         // Print full message.
-        //print("%@", userInfo)
+        print("%@", userInfo)
         //print(userInfo["aps"]!["alert"]!)
+        print(userInfo["source"]!)
         
         print("Called from didRecieveRemoteNotification.")
+        
+        if let source = userInfo["source"] as? NSString {
+            self.payloadSource = source
+        }
         
         if let aps = userInfo["aps"] as? NSDictionary {
             if let alert = aps["alert"] as? NSDictionary {
