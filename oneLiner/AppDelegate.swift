@@ -106,12 +106,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
         // Print message ID.
-        print("Message ID: \(userInfo["gcm.message_id"]!)")
+      //  print("Message ID: \(userInfo["gcm.message_id"]!)")
         
         // Print full message.
-        print("%@", userInfo)
+       // print("%@", userInfo)
         //print(userInfo["aps"]!["alert"]!)
-        print(userInfo["source"]!)
+        //print(userInfo["source"]!)
         
         print("Called from didRecieveRemoteNotification.")
         

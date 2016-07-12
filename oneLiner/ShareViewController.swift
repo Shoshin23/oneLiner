@@ -79,8 +79,16 @@ class ShareViewController: UIViewController {
         
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         self.optionChosen.text = Topics.oneLiners[selectedIndex]
+        if appDel.payload != nil {
         self.shareContent.text = appDel.payload! as String
+        } else {
+            self.shareContent.text = " "
+        }
+        if appDel.payloadSource != nil {
         self.sourceName.text = appDel.payloadSource! as String
+        } else {
+            self.sourceName.text = " "
+        }
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
     

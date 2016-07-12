@@ -314,7 +314,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.84334254895638305" green="0.81759031274851157" blue="0.046244333376311238" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="shareVC"/>
                         <constraints>
                             <constraint firstItem="CZi-uT-wZ5" firstAttribute="top" secondItem="5UH-wa-l9H" secondAttribute="bottom" constant="25" id="4p5-2M-rm2"/>
