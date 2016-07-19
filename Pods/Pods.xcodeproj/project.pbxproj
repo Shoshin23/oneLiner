@@ -463,7 +463,7 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>31EF0F407299B820F8C99429526FA93D</string>
+				<string>FA47EEE7F4A1DBB8831394A2AFDEBF61</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -471,19 +471,6 @@
 			<string>FirebaseAnalytics</string>
 			<key>path</key>
 			<string>FirebaseAnalytics</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>31EF0F407299B820F8C99429526FA93D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>353E6797C4D9843BD31CE00385FB1B6D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -529,19 +516,6 @@
 			<string>3DE1CCF8D294F4BD13D831170EC24B9A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>353E6797C4D9843BD31CE00385FB1B6D</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseAnalytics.framework</string>
-			<key>path</key>
-			<string>Frameworks/FirebaseAnalytics.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>35E48207FEB029241B8E614DC454B239</key>
 		<dict>
@@ -2365,6 +2339,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>DA6D7B4259BF8E34C2A54990512FEA26</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseAnalytics.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseAnalytics.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>DAB82EFDC8D9AE733AB3501210D725FE</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -2673,6 +2660,19 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FA47EEE7F4A1DBB8831394A2AFDEBF61</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DA6D7B4259BF8E34C2A54990512FEA26</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
