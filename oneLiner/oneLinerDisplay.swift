@@ -8,9 +8,11 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import FirebaseMessaging
 import FirebaseInstanceID
 import JDStatusBarNotification
+
 
 
 class oneLinerDisplay: UITableViewController {
@@ -20,34 +22,22 @@ class oneLinerDisplay: UITableViewController {
     var checked:Bool = false
     var chosenOption:Int!
     var deselectedIndexPath:NSIndexPath = NSIndexPath()
-    let oneLiners = Topics.oneLiners
+    var oneLiners = ["Random"]
     let dimLevel: CGFloat = 0.5
     let dimSpeed: Double = 0.5
-    
-    //Local methods
-    @IBAction func showAlert() {
-        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet.", preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
-    }
+    var cellClicked:Int!
+    var olRef: FIRDatabaseReference!
     
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        dim(.In, alpha: dimLevel, speed: dimSpeed)
-//    }
-//    
-//    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
-//        dim(.Out, speed: dimSpeed)
-//    }
-//    
+
         // Animate table method.
         //  ref: Appcoda tutorial
     
- func animateTable() {
-        self.tableView.reloadData()
+    func animateTable() {
+        
+
+        
+        //self.tableView.reloadData()
         
         let cells = self.tableView.visibleCells
         let tableHeight: CGFloat = self.tableView.bounds.size.height
@@ -71,10 +61,10 @@ class oneLinerDisplay: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.animateTable()
         
         //print("In viewWillAppear:")
         //print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
-        animateTable()
        
     }
     
@@ -99,9 +89,50 @@ class oneLinerDisplay: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
+        
+        
+//        let triggerTime = (Int64(NSEC_PER_SEC) * 3)
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+//           
+//        })
+        
+        
+        if Reachability.isConnectedToNetwork() == true {
+            //fetch 1Liners from Firebase.
+            olRef = FIRDatabase.database().reference()
+            olRef.child("topics").observeEventType(.Value, withBlock: { (snapshot) in
+                if snapshot.exists(){
+                    let postDict = snapshot.value as! [String: AnyObject]
+                    let olTopicString = postDict["topic"] as! String
+                    if olTopicString != " " {
+                        self.oneLiners.append(olTopicString)
+                    }
+                    print(snapshot.childrenCount)
+                    if self.oneLiners.count >= Int(snapshot.childrenCount)  {
+                        print(self.oneLiners.count)
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                        self.tableView.reloadData()
+                        self.animateTable()
+                    }
+                }
+            })
+            
+        }
+            
+        else {
+            DataService.showAlert(self)
+            
+        }
+        self.view.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
         self.tableView.allowsMultipleSelection = false
-        animateTable()
+       // animateTable()
+        JDStatusBarNotification.showWithStatus("Fetching topics.",dismissAfter: 2.0)
+        
+        
+        
         
         let image = UIImage(named: "logo_small")
         self.navigationItem.titleView = UIImageView(image: image)
@@ -112,25 +143,30 @@ class oneLinerDisplay: UITableViewController {
 
         
         //check for network connection. Else throw an error.
-        if Reachability.isConnectedToNetwork() == false {
-            showAlert()
-        }
+       
         
     }
     
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return oneLiners.count
+        
+      
+        return self.oneLiners.count
     }
+    
+   
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
+        cell.contentView.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        cell.accessoryView?.backgroundColor = UIColor.yellowColor()
         cell.textLabel?.font = UIFont(name: "Avenir-Light", size: 24.0)
         
-        cell.textLabel?.text = oneLiners[indexPath.row]
-        let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
+       
         
+        cell.textLabel?.text = oneLiners[indexPath.row]
+        var getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int        
         if getOption == indexPath.row {
             cell.accessoryType = .Checkmark
             cell.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
@@ -144,6 +180,29 @@ class oneLinerDisplay: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        cell.accessoryView?.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        cell.contentView.superview?.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        cell.contentView.backgroundColor = UIColor.init(hex: "#F4EC0E")
+    }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let more = UITableViewRowAction(style: .Default, title: "➔") { action, index in
+            
+            self.performSegueWithIdentifier("oneLinerShow", sender: indexPath) //segue.
+        }
+        
+        more.backgroundColor = UIColor.grayColor()
+        
+        return [more]
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // you need to implement this method too or you can't swipe to display the actions
+    }
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         //Local Variables
@@ -152,15 +211,16 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath!)
         let optionChecked = indexPath?.row
 
-        
+        cell?.accessoryView?.superview?.backgroundColor = UIColor.init(hex: "#F4EC0E")
+
         cell?.accessoryType = .Checkmark
         cell!.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
 
         
-        let topic = oneLiners[optionChecked!].stringByReplacingOccurrencesOfString(" ", withString: "")
-        //print(topic)
+        let topic = oneLiners[optionChecked!]
+
         
-        FIRMessaging.messaging().subscribeToTopic("/topics/\(topic)")
+        FIRMessaging.messaging().subscribeToTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
         print("Subscribed to the \(topic). Send me PNs?")
         JDStatusBarNotification.showWithStatus("Topic selected! You may now close the app. :)", dismissAfter: 4.0, styleName: "JDStatusBarStyleDark")
         
@@ -175,7 +235,6 @@ class oneLinerDisplay: UITableViewController {
         print("Unsubscribed from \(self.oneLiners[getOption!])")
         }
     
-         //shouldnt be here. Everytime i click on a topic, notifications are scheduled. Instead, it has to be done just once. When the app is loaded.
         NSUserDefaults.standardUserDefaults().setValue(optionChecked, forKey: "chosenOption")
         tableView.reloadData()
         
@@ -185,4 +244,16 @@ class oneLinerDisplay: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .None
         }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "oneLinerShow" {
+                let indexPath = sender! //this is how you send indexPath!
+                let destinationViewController = segue.destinationViewController as! dailyOneLiner
+                destinationViewController.cellClicked = indexPath.row
+                destinationViewController.olTopics = oneLiners
+            
+        }
+    }
+    
 }

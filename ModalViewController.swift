@@ -33,14 +33,7 @@ class ModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        popUpView.layer.cornerRadius = 10
-        popUpView.layer.borderColor = UIColor.blackColor().CGColor
-        popUpView.layer.borderWidth = 0.25
-        popUpView.layer.shadowColor = UIColor.blackColor().CGColor
-        popUpView.layer.shadowOpacity = 0.8
-        popUpView.layer.shadowRadius = 25
-        popUpView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        popUpView.layer.masksToBounds = false
+       DataService.configureCard(popUpView)
         
 //        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
 

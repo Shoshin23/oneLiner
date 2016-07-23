@@ -1,4 +1,5 @@
 PODS:
+  - BWSwipeRevealCell (1.0.1)
   - Firebase (3.3.0):
     - Firebase/Core (= 3.3.0)
   - Firebase/Analytics (3.3.0):
@@ -33,14 +34,17 @@ PODS:
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
   - JDStatusBarNotification (1.5.3)
+  - MGSwipeTableCell (1.5.5)
   - Spring (1.0.3)
 
 DEPENDENCIES:
+  - BWSwipeRevealCell
   - Firebase (>= 2.5.1)
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
   - JDStatusBarNotification
+  - MGSwipeTableCell
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
 
 EXTERNAL SOURCES:
@@ -54,6 +58,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  BWSwipeRevealCell: 1ff11ace22ed0399e197ef3a1396f08ce08ad5b9
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
@@ -64,6 +69,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   JDStatusBarNotification: 29413865af11c862c17180610b0f46a21118b412
+  MGSwipeTableCell: bafeb5f351124544c9364ecbdf24c7b06a37d340
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
 COCOAPODS: 0.39.0

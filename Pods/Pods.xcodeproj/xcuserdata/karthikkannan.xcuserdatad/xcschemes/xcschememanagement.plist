@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BWSwipeRevealCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JDStatusBarNotification.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>23871774E46ABF701F565890CED02A6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>28119B9E4AC5A30A2421F7A126C16D29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>35FAFEC4CC2C2EBECEE1C9DCC300D424</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0E913F271BE919EE4CB6B18D75D6B6A</key>
+		<key>4E1263BFF45F6446CF3DE29AE234C893</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAB82EFDC8D9AE733AB3501210D725FE</key>
+		<key>A32595E88F8D867EFA867FA14BC078E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

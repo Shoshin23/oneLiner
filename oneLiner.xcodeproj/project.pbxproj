@@ -13,6 +13,7 @@
 		3065424A1D1C136E005004FF /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306542491D1C136E005004FF /* ModalViewController.swift */; };
 		30776B2C1D23BDF40067AFEA /* ModalPopovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30776B2B1D23BDF40067AFEA /* ModalPopovers.swift */; };
 		30789CA51CE11B4000E4B878 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30789CA41CE11B4000E4B878 /* DataService.swift */; };
+		30AE4E4A1D3F99B5008CCBDE /* dailyOneLiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AE4E491D3F99B5008CCBDE /* dailyOneLiner.swift */; };
 		30BBC3441CE0E20900BA1D78 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */; };
 		30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BBC3451CE110E600BA1D78 /* MaterialView.swift */; };
 		30D32BA41D1D543B004685FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D32BA31D1D543B004685FE /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		306542491D1C136E005004FF /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalViewController.swift; path = ../ModalViewController.swift; sourceTree = "<group>"; };
 		30776B2B1D23BDF40067AFEA /* ModalPopovers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalPopovers.swift; path = ../ModalPopovers.swift; sourceTree = "<group>"; };
 		30789CA41CE11B4000E4B878 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		30AE4E491D3F99B5008CCBDE /* dailyOneLiner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dailyOneLiner.swift; sourceTree = "<group>"; };
 		30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		30BBC3451CE110E600BA1D78 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		30D32BA31D1D543B004685FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,8 +128,8 @@
 				3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */,
 				304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */,
 				30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */,
+				30AE4E491D3F99B5008CCBDE /* dailyOneLiner.swift */,
 				30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */,
-				30D32BA31D1D543B004685FE /* Assets.xcassets */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +181,7 @@
 				30789CA21CE1199600E4B878 /* view */,
 				30789CA11CE1198200E4B878 /* Controllers */,
 				30EF73851CDE863400423339 /* AppDelegate.swift */,
+				30D32BA31D1D543B004685FE /* Assets.xcassets */,
 				30EF73891CDE863400423339 /* Main.storyboard */,
 				30EF73911CDE863400423339 /* LaunchScreen.storyboard */,
 				30EF73941CDE863400423339 /* Info.plist */,
@@ -407,6 +410,7 @@
 				30776B2C1D23BDF40067AFEA /* ModalPopovers.swift in Sources */,
 				30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */,
 				3043865B1D1AC14600D0802C /* WalkthroughPageViewController.swift in Sources */,
+				30AE4E4A1D3F99B5008CCBDE /* dailyOneLiner.swift in Sources */,
 				3065424A1D1C136E005004FF /* ModalViewController.swift in Sources */,
 				30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */,
 				30BBC3461CE110E600BA1D78 /* MaterialView.swift in Sources */,

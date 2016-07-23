@@ -13,5 +13,4 @@ class Topics {
     
     static let oneLiners = ["Motivation", "Fitness", "Fun Facts", "Startups", "Jokes", "Mindfulness", "Shower Thoughts", "Pop Quiz", "Design", "Random"]
     
-    
 }
