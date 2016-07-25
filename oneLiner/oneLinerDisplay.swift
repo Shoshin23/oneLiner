@@ -147,7 +147,6 @@ class oneLinerDisplay: UITableViewController {
         cell.accessoryView?.backgroundColor = UIColor.yellowColor()
         cell.textLabel?.font = UIFont(name: "Avenir-Light", size: 24.0)
         
-        
         //configure right buttons
         cell.rightSwipeSettings.transition = .Drag
         cell.rightExpansion.animationDuration = 2
@@ -155,7 +154,7 @@ class oneLinerDisplay: UITableViewController {
         cell.rightExpansion.expansionColor = UIColor.yellowColor()
         cell.rightExpansion.buttonIndex = 0
         
-        let swipeToCard = MGSwipeButton(title: "⬅︎", backgroundColor: UIColor.init(hex: "#F4EC0E"), callback: {
+        let swipeToCard = MGSwipeButton(title: "",icon: DataService.resizeImage(UIImage(named: "swipeArrow")!, newWidth: 24),backgroundColor: UIColor.yellowColor(), callback: {
             (sender: MGSwipeTableCell!) -> Bool in
             
             let indexPath = self.tableView.indexPathForCell(sender)
@@ -163,38 +162,30 @@ class oneLinerDisplay: UITableViewController {
             return true
         })
         
+        swipeToCard.tintColor = UIColor.blackColor()
+        
         cell.rightButtons = [swipeToCard]
         
         cell.textLabel?.text = oneLiners[indexPath.row]
         let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
         if getOption == indexPath.row {
-            cell.accessoryType = .Checkmark
+            var imageView : UIImageView
+            imageView  = UIImageView(frame:CGRect(x: 0, y: 0, width: 30, height: 30))
+            imageView.image = UIImage(named:"Tick")
+            cell.accessoryView = imageView
             cell.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
         }
         else {
-            cell.accessoryType = .None
+            var imageView : UIImageView
+            imageView  = UIImageView(frame:CGRect(x: 0, y: 0, width: 30, height: 30))
+            imageView.image = UIImage(named:"tabsArrow")
+            cell.accessoryView = imageView
+
         }
-       
 
         
         return cell
     }
-
-    
-//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-//        let more = UITableViewRowAction(style: .Default, title: "➔") { action, index in
-//            
-//        }
-//        
-//        more.backgroundColor = UIColor.grayColor()
-//        
-//        return [more]
-//    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // you need to implement this method too or you can't swipe to display the actions
-    }
-    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -265,3 +256,19 @@ class oneLinerDisplay: UITableViewController {
 //        cell.contentView.superview?.backgroundColor = UIColor.init(hex: "#F4EC0E")
 //        cell.contentView.backgroundColor = UIColor.init(hex: "#F4EC0E")
 //    }
+
+
+//    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//        let more = UITableViewRowAction(style: .Default, title: "➔") { action, index in
+//
+//        }
+//
+//        more.backgroundColor = UIColor.grayColor()
+//
+//        return [more]
+//    }
+
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        // you need to implement this method too or you can't swipe to display the actions
+//    }
+    
