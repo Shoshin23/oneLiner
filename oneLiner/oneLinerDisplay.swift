@@ -13,6 +13,7 @@ import FirebaseMessaging
 import FirebaseInstanceID
 import JDStatusBarNotification
 import MGSwipeTableCell
+import Armchair
 
 
 class oneLinerDisplay: UITableViewController {
@@ -66,6 +67,7 @@ class oneLinerDisplay: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         let hasViewedWalkthrough = defaults.boolForKey("hasViewedWalkthrough")
         if hasViewedWalkthrough {
@@ -85,9 +87,8 @@ class oneLinerDisplay: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Armchair.appID("1127228637")  //Ask for a review. Set it to default.
         //Check if chosenTopic is not nil. If not, then add it to the array of chosenTopics. Add some backwards compatability between 1.1 and 1.2
-        
-      
         
         if Reachability.isConnectedToNetwork() == true {
             //fetch 1Liners from Firebase.

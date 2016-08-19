@@ -1,4 +1,5 @@
 PODS:
+  - Armchair (0.1.2)
   - BWSwipeRevealCell (1.0.1)
   - Firebase (3.3.0):
     - Firebase/Core (= 3.3.0)
@@ -38,6 +39,7 @@ PODS:
   - Spring (1.0.3)
 
 DEPENDENCIES:
+  - Armchair (>= 0.1)
   - BWSwipeRevealCell
   - Firebase (>= 2.5.1)
   - Firebase/Core
@@ -58,6 +60,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  Armchair: 10f49453001a25036e1dc8e74e4f1b699add562c
   BWSwipeRevealCell: 1ff11ace22ed0399e197ef3a1396f08ce08ad5b9
   Firebase: 6250071f0e2440a5c4c67b8cb6b868f868237ac3
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
@@ -72,4 +75,6 @@ SPEC CHECKSUMS:
   MGSwipeTableCell: bafeb5f351124544c9364ecbdf24c7b06a37d340
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 8ee708e131d49eef7eea5de2ed2aebe8e2f4fb12
+
+COCOAPODS: 1.0.1

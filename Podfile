@@ -11,8 +11,8 @@ pod 'Firebase/Database'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 pod 'JDStatusBarNotification'
 pod 'BWSwipeRevealCell'
-pod ‘MGSwipeTableCell’
-
+pod 'MGSwipeTableCell'
+pod 'Armchair', '>= 0.1'
 
 end
 
