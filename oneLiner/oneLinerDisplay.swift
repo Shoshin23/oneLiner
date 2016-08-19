@@ -202,7 +202,7 @@ class oneLinerDisplay: UITableViewController {
         if(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") != nil) {
             //print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
             let getTopics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
-            print(getTopics)
+           // print(getTopics)
             
             if getTopics.contains(oneLiners[indexPath.row]) {
                 var imageView : UIImageView
@@ -241,31 +241,28 @@ class oneLinerDisplay: UITableViewController {
 
         
         let topic = oneLiners[optionChecked!] //topic is the cell I just chose.
-
-        //subscribe to the topic and display a notification to close the app.
         
+        //LOG: Check if topic is already there in selected_topics. If it's there, remove it, save and reload table. Else, append, save and reload data.
+        
+        var selected_Topics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
+        if(selected_Topics.contains(oneLiners[optionChecked!])) {
+            FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
+            let getIndex = selected_Topics.indexOf(oneLiners[optionChecked!]) //get index of the element within selected_Topics
+            selected_Topics.removeAtIndex(getIndex!) //remove that element.
+            NSUserDefaults.standardUserDefaults().setValue(selected_Topics, forKey: "chosenTopics")
+            print("Unsubscribed from \(topic), here's the latest array: \(selected_Topics)")
+            JDStatusBarNotification.showWithStatus("Succesfully unsubscribed from topic!", dismissAfter: 2.0, styleName: "JDStatusBarStyleDark")
+            tableView.reloadData()
+        }
+        
+        else {
         FIRMessaging.messaging().subscribeToTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
         print("Subscribed to the \(topic). Send me PNs?")
         JDStatusBarNotification.showWithStatus("Topic selected! You may now close the app. :)", dismissAfter: 4.0, styleName: "JDStatusBarStyleDark")
-        
-        
-        
-        //fetch the previous topic from the existing NSUserDefaults
-//        if(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") != nil){
-//        let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
-//        let previous_topic = self.oneLiners[getOption!].stringByReplacingOccurrencesOfString(" ", withString: "")
-//        
-//        //unsubcribe from the previous topic. 
-//        FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(previous_topic)")
-//        print("Unsubscribed from \(self.oneLiners[getOption!])")
-//        }
-    
-        var selected_Topics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [NSString]
         selected_Topics.append(topic)
         NSUserDefaults.standardUserDefaults().setValue(selected_Topics, forKey: "chosenTopics")
-        print("New ChosenTopics")
-        print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
         tableView.reloadData()
+        }
         
         
     }
