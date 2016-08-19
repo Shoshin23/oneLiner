@@ -115,15 +115,15 @@ class oneLinerDisplay: UITableViewController {
                                 //check if chosenTopics is already there in the array.
                                 if(ct2.contains(self.oneLiners[self.chosenTopic!]) == false) {
                                     ct2.append(self.oneLiners[self.chosenTopic!])
-                                    //write to NSUSerDefaults. 
-                                    NSUserDefaults.standardUserDefaults().setValue(ct2, forKey: "chosenTopics")
-                                    print( NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
+    
+                                    NSUserDefaults.standardUserDefaults().setValue(ct2, forKey: "chosenTopics") //write to NSUSerDefaults.
+                                    //print( NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
                                 }
                             }
                             else {
                                 self.chosenTopics.append(self.oneLiners[self.chosenTopic!])
                                 NSUserDefaults.standardUserDefaults().setValue(self.chosenTopics, forKey: "chosenTopics")
-                                print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
+                               // print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
 
                             }
                         }
@@ -200,7 +200,6 @@ class oneLinerDisplay: UITableViewController {
         
         //LOGIC: Here. You fetch the latest and greatest array of ChosenTopics. You simply check if there's something in there from the oneLiners array and the chosenTopics array. And you rain in the check marks. else it's the tabs.
         if(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") != nil) {
-            //print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
             let getTopics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
            // print(getTopics)
             
@@ -249,9 +248,11 @@ class oneLinerDisplay: UITableViewController {
             FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
             let getIndex = selected_Topics.indexOf(oneLiners[optionChecked!]) //get index of the element within selected_Topics
             selected_Topics.removeAtIndex(getIndex!) //remove that element.
+            
             NSUserDefaults.standardUserDefaults().setValue(selected_Topics, forKey: "chosenTopics")
             print("Unsubscribed from \(topic), here's the latest array: \(selected_Topics)")
             JDStatusBarNotification.showWithStatus("Succesfully unsubscribed from topic!", dismissAfter: 2.0, styleName: "JDStatusBarStyleDark")
+            
             tableView.reloadData()
         }
         
