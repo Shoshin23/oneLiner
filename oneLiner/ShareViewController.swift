@@ -41,6 +41,8 @@ class ShareViewController: UIViewController {
     
     
     @IBAction func shareButton(sender: UIButton) {
+        
+        FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType: Topics.oneLiners[selectedIndex]]) //Log share event.
     
         let defaultText = appDel.payload! as String + " #1Liner " + "#" + Topics.oneLiners[selectedIndex].stringByReplacingOccurrencesOfString(" ", withString: "")
         
@@ -58,6 +60,7 @@ class ShareViewController: UIViewController {
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
         DataService.configureCard(shareView)
         
+        FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterContentType:"cardView"]) //log when someone comes into the shareVC.
         
         
         self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int

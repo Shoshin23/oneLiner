@@ -12,45 +12,87 @@ import FirebaseDatabase
 import JDStatusBarNotification
 import Social
 
+extension UIView {
+    func pb_takeSnapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+        
+        drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        
+        // old style: layer.renderInContext(UIGraphicsGetCurrentContext())
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
 class dailyOneLiner: UIViewController {
     
-    @IBOutlet var topicChosen: UILabel!
     @IBOutlet var oneLinerContent: UITextView!
     @IBOutlet var source: UILabel!
+    @IBOutlet var backgroundImg: UIImageView!
     
+    @IBOutlet var shareBtn: UIButton!
     var olTopics:[String]!
     
-    @IBOutlet var card: UIView!
+    @IBOutlet var backBtn: UIButton!
     var cellClicked: Int!
     
     @IBAction func shareButton(sender: UIButton) {
-        
-        let defaultText = self.oneLinerContent.text + " #1Liner " + "#" + olTopics[cellClicked].stringByReplacingOccurrencesOfString(" ", withString: "")
-        
-        let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-        self.presentViewController(activityController, animated: true, completion: nil)
-        UIPasteboard.generalPasteboard().string = self.oneLinerContent.text
+        shareBtn.hidden = true
+        backBtn.hidden = true
+        let img = view.pb_takeSnapshot()
+        share(shareText: "#1Liner", shareImage: img)
+        shareBtn.hidden = false
+        backBtn.hidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+
     }
     
     
-  
+    func share(shareText shareText:String?,shareImage:UIImage?){
+        
+        var objectsToShare = [AnyObject]()
+        
+        if let shareTextObj = shareText{
+            objectsToShare.append(shareTextObj)
+        }
+        
+        if let shareImageObj = shareImage{
+            objectsToShare.append(shareImageObj)
+        }
+        
+        if objectsToShare.count > 0 {
+            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            presentViewController(activityViewController, animated: true, completion: nil)
+        }else{
+            print("There is nothing to share")
+        }
+    }
 
+    @IBAction func back(sender: AnyObject) {
+        navigationController!.popViewControllerAnimated(true)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print(olTopics)
-        
-        //configure card
-        DataService.configureCard(card)
-        
-        //set title and tint color.
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+                
+        //Hide Navigation bar bro!
+        self.navigationController?.navigationBarHidden = true
         
         //which topic was chosen?
         let chosenTopic = olTopics[cellClicked]
         print(chosenTopic)
         
-        topicChosen.text = chosenTopic
-        
+        backgroundImg.image = UIImage(named: chosenTopic)
+                
         //FIR Database reference. 
         var postRef: FIRDatabaseReference!
         postRef =  FIRDatabase.database().reference()

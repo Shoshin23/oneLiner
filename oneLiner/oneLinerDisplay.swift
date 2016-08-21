@@ -228,6 +228,9 @@ class oneLinerDisplay: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        
+        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: [kFIRParameterContentType: oneLiners[indexPath.row]])
+        
         //Local Variables
         
         let indexPath = tableView.indexPathForSelectedRow
