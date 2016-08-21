@@ -13,17 +13,16 @@ import Firebase
 import Social
 import Spring
 
-
-
 class ShareViewController: UIViewController {
     
     
-    @IBOutlet var optionChosen: UILabel!
     
-    @IBOutlet var shareView: UIView!
+    @IBOutlet var backgroundImg: UIImageView!
     @IBOutlet var sourceName: UILabel!
     var postDict = [AnyObject]()
     
+    @IBOutlet var backBtn: UIButton!
+    @IBOutlet var shareBtn: UIButton!
     @IBOutlet var shareContent: UITextView!
     //obtain selectedIndex here 
     var selectedIndex:Int!
@@ -38,18 +37,56 @@ class ShareViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func share(shareText shareText:String?,shareImage:UIImage?){
+        
+        var objectsToShare = [AnyObject]()
+        
+        if let shareTextObj = shareText{
+            objectsToShare.append(shareTextObj)
+        }
+        
+        if let shareImageObj = shareImage{
+            objectsToShare.append(shareImageObj)
+        }
+        
+        if objectsToShare.count > 0 {
+            let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            presentViewController(activityViewController, animated: true, completion: nil)
+        }
+        else{
+            print("There is nothing to share")
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+        
+    }
+
     
     
     @IBAction func shareButton(sender: UIButton) {
         
         FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType: Topics.oneLiners[selectedIndex]]) //Log share event.
-    
-        let defaultText = appDel.payload! as String + " #1Liner " + "#" + Topics.oneLiners[selectedIndex].stringByReplacingOccurrencesOfString(" ", withString: "")
+        if appDel.payloadTopic != nil {
+            backgroundImg.image = UIImage(named: appDel.payloadTopic as! String)
+            
+            
+        } else {
+            backgroundImg.image = UIImage(named: "Motivation")
+        }
         
-        let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-        self.presentViewController(activityController, animated: true, completion: nil)
-        UIPasteboard.generalPasteboard().string = appDel.payload as? String
-    }
+        shareBtn.hidden = true
+        backBtn.hidden = true
+        let img = view.pb_takeSnapshot()
+        share(shareText: "#1Liner", shareImage: img)
+        shareBtn.hidden = false
+        backBtn.hidden = false
+    
+            }
     
   
     
@@ -58,13 +95,11 @@ class ShareViewController: UIViewController {
         //print("In shareVC.")
        // print("From shareVC, we can read the payload now! \(appDel.payload!)")
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
-        DataService.configureCard(shareView)
+        self.navigationController?.navigationBarHidden = true
+
         
         FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterContentType:"cardView"]) //log when someone comes into the shareVC.
         
-        
-        self.selectedIndex = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
-        self.optionChosen.text = Topics.oneLiners[selectedIndex]
         if appDel.payload != nil {
         self.shareContent.text = appDel.payload! as String
         } else {

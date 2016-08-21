@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var payload: NSString?
     var payloadSource: NSString?
+    var payloadTopic: NSString?
     
     
 
@@ -117,6 +118,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let source = userInfo["source"] as? NSString {
             self.payloadSource = source
+        }
+        
+        if let topic = userInfo["topic"] as? NSString {
+            self.payloadTopic = topic
         }
         
         if let aps = userInfo["aps"] as? NSDictionary {

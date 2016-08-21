@@ -128,6 +128,9 @@ class oneLinerDisplay: UITableViewController {
 
                             }
                         }
+                        else {
+                            NSUserDefaults.standardUserDefaults().setValue(self.chosenTopics, forKey: "chosenTopics")
+                        }
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
                         self.tableView.reloadData()
@@ -202,7 +205,7 @@ class oneLinerDisplay: UITableViewController {
         //LOGIC: Here. You fetch the latest and greatest array of ChosenTopics. You simply check if there's something in there from the oneLiners array and the chosenTopics array. And you rain in the check marks. else it's the tabs.
         if(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") != nil) {
             let getTopics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
-           // print(getTopics)
+            print(getTopics)
             
             if getTopics.contains(oneLiners[indexPath.row]) {
                 var imageView : UIImageView
