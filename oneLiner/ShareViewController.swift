@@ -67,6 +67,10 @@ class ShareViewController: UIViewController {
     }
 
     
+    @IBAction func back(sender: AnyObject) {
+        navigationController!.popViewControllerAnimated(true)
+        
+    }
     
     @IBAction func shareButton(sender: UIButton) {
         
