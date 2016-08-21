@@ -70,7 +70,7 @@ class ShareViewController: UIViewController {
     
     @IBAction func shareButton(sender: UIButton) {
         
-        FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType: Topics.oneLiners[selectedIndex]]) //Log share event.
+        FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType:"share"]) //Log share event.
         if appDel.payloadTopic != nil {
             backgroundImg.image = UIImage(named: appDel.payloadTopic as! String)
             

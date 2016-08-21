@@ -129,7 +129,10 @@ class oneLinerDisplay: UITableViewController {
                             }
                         }
                         else {
+                            if (NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") == nil) {
                             NSUserDefaults.standardUserDefaults().setValue(self.chosenTopics, forKey: "chosenTopics")
+                            }
+                            
                         }
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
