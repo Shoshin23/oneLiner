@@ -75,13 +75,6 @@ class ShareViewController: UIViewController {
     @IBAction func shareButton(sender: UIButton) {
         
         FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType:"share"]) //Log share event.
-        if appDel.payloadTopic != nil {
-            backgroundImg.image = UIImage(named: appDel.payloadTopic as! String)
-            
-            
-        } else {
-            backgroundImg.image = UIImage(named: "Motivation")
-        }
         
         shareBtn.hidden = true
         backBtn.hidden = true
@@ -100,7 +93,14 @@ class ShareViewController: UIViewController {
        // print("From shareVC, we can read the payload now! \(appDel.payload!)")
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
         self.navigationController?.navigationBarHidden = true
-
+        
+        if appDel.payloadTopic != nil {
+            backgroundImg.image = UIImage(named: appDel.payloadTopic as! String)
+            
+            
+        } else {
+            backgroundImg.image = UIImage(named: "Motivation")
+        }
         
         FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterContentType:"cardView"]) //log when someone comes into the shareVC.
         

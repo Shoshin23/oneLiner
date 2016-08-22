@@ -92,7 +92,6 @@ class dailyOneLiner: UIViewController {
         print(chosenTopic)
         
         backgroundImg.image = UIImage(named: chosenTopic)
-                
         //FIR Database reference. 
         var postRef: FIRDatabaseReference!
         postRef =  FIRDatabase.database().reference()
