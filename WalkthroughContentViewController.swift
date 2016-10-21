@@ -26,18 +26,18 @@ class WalkthroughContentViewController: UIViewController {
         pageControl.currentPage = index
         
         switch index {
-        case 0...2: forwardButton.setTitle("", forState: UIControlState.Normal)
-        case 3: forwardButton.setTitle("Let's Go!", forState: UIControlState.Normal)
+        case 0...2: forwardButton.setTitle("", for: UIControlState())
+        case 3: forwardButton.setTitle("Let's Go!", for: UIControlState())
         default: break
         }
 
         
     }
     
-    @IBAction func close(sender: AnyObject) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setBool(true, forKey: "hasViewedWalkthrough")
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func close(_ sender: AnyObject) {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "hasViewedWalkthrough")
+        dismiss(animated: true, completion: nil)
     }
     
     

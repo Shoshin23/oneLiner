@@ -14,15 +14,15 @@ import Social
 
 extension UIView {
     func pb_takeSnapshot() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
         
-        drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         
         // old style: layer.renderInContext(UIGraphicsGetCurrentContext())
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return image
+        return image!
     }
 }
 
@@ -38,28 +38,28 @@ class dailyOneLiner: UIViewController {
     @IBOutlet var backBtn: UIButton!
     var cellClicked: Int!
     
-    @IBAction func shareButton(sender: UIButton) {
-        shareBtn.hidden = true
-        backBtn.hidden = true
+    @IBAction func shareButton(_ sender: UIButton) {
+        shareBtn.isHidden = true
+        backBtn.isHidden = true
         let img = view.pb_takeSnapshot()
         share(shareText: "#1Liner", shareImage: img)
-        shareBtn.hidden = false
-        backBtn.hidden = false
+        shareBtn.isHidden = false
+        backBtn.isHidden = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
 
     }
     
     
-    func share(shareText shareText:String?,shareImage:UIImage?){
+    func share(shareText:String?,shareImage:UIImage?){
         
         var objectsToShare = [AnyObject]()
         
         if let shareTextObj = shareText{
-            objectsToShare.append(shareTextObj)
+            objectsToShare.append(shareTextObj as AnyObject)
         }
         
         if let shareImageObj = shareImage{
@@ -70,14 +70,14 @@ class dailyOneLiner: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             
-            presentViewController(activityViewController, animated: true, completion: nil)
+            present(activityViewController, animated: true, completion: nil)
         }else{
             print("There is nothing to share")
         }
     }
 
-    @IBAction func back(sender: AnyObject) {
-        navigationController!.popViewControllerAnimated(true)
+    @IBAction func back(_ sender: AnyObject) {
+        navigationController!.popViewController(animated: true)
 
     }
     override func viewDidLoad() {
@@ -85,7 +85,7 @@ class dailyOneLiner: UIViewController {
         print(olTopics)
                 
         //Hide Navigation bar bro!
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
         //which topic was chosen?
         let chosenTopic = olTopics[cellClicked]
@@ -98,7 +98,7 @@ class dailyOneLiner: UIViewController {
         //check for a net connection, else inform user that he needs the internet for this. 
         
         if Reachability.isConnectedToNetwork() == true {
-        postRef.child(chosenTopic).observeEventType(.Value, withBlock: { (snapshot) in
+        postRef.child(chosenTopic).observe(.value, with: { (snapshot) in
             print(snapshot.value)
             let postDict = snapshot.value as! [String:AnyObject]
             self.oneLinerContent.text = postDict["post"] as! String

@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Armchair.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BWSwipeRevealCell.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>JDStatusBarNotification.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,11 +29,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Spring.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -57,7 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B9058998EB16A78E60F8844B0444947</key>
+		<key>70BCFF08ADE3DCFC235845B9D1C53519</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,22 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A32595E88F8D867EFA867FA14BC078E1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A5A77A773B54F8686BED191F7DF75BC7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8A8208B91F0A49D93412156D005D448</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C80CF32D1DB28142A1F20135BDEAB66E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

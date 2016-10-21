@@ -13,10 +13,10 @@ import FirebaseMessaging
 import FirebaseInstanceID
 import JDStatusBarNotification
 import MGSwipeTableCell
-import Armchair
+//import Armchair
 
 
-class oneLinerDisplay: UITableViewController {
+class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
     
    //Declarations
     
@@ -25,7 +25,7 @@ class oneLinerDisplay: UITableViewController {
     var cellClicked:Int!
     var chosenTopics = [String]() //store all chosen topics here.
     var olRef: FIRDatabaseReference!
-    var chosenTopic = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
+    var chosenTopic = UserDefaults.standard.value(forKey: "chosenOption") as? Int
     
 
         // Animate table method.
@@ -40,43 +40,43 @@ class oneLinerDisplay: UITableViewController {
         
         for i in cells {
             let cell: UITableViewCell = i as UITableViewCell
-            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
         }
         
         var index = 0
         
         for a in cells {
             let cell: UITableViewCell = a as UITableViewCell
-            UIView.animateWithDuration(1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-                cell.transform = CGAffineTransformMakeTranslation(0, 0);
+            UIView.animate(withDuration: 1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0);
                 }, completion: nil)
             
             index += 1
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.animateTable() // call each time the view(coming from the cardView back to the listView.)
         
-        //print("In viewWillAppear:")
+        print("In viewWillAppear:")
         //print(NSUserDefaults.standardUserDefaults().valueForKey("chosenOption"))
        
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let hasViewedWalkthrough = defaults.boolForKey("hasViewedWalkthrough")
+        let defaults = UserDefaults.standard
+        let hasViewedWalkthrough = defaults.bool(forKey: "hasViewedWalkthrough")
         if hasViewedWalkthrough {
             return
         }
         if let pageViewController =
-            storyboard?.instantiateViewControllerWithIdentifier("WalkthroughController")
+            storyboard?.instantiateViewController(withIdentifier: "WalkthroughController")
                 as? WalkthroughPageViewController {
-            presentViewController(pageViewController, animated: true, completion: nil)
+            present(pageViewController, animated: true, completion: nil)
         }
         //print("In viewDidAppear.")
     }
@@ -87,19 +87,22 @@ class oneLinerDisplay: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Armchair.appID("1127228637")  //Ask for a review. Set it to default.
+//        Armchair.appID("1127228637")  //Ask for a review. Set it to default.
         //Check if chosenTopic is not nil. If not, then add it to the array of chosenTopics. Add some backwards compatability between 1.1 and 1.2
+        
+       self.tableView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(swipeAction(_:))))
         
         if Reachability.isConnectedToNetwork() == true {
             //fetch 1Liners from Firebase.
             olRef = FIRDatabase.database().reference()
-            olRef.child("topics").observeEventType(.Value, withBlock: { (snapshot) in
+            olRef.child("topics").observe(.value, with: { (snapshot) in
                 if snapshot.exists(){
                     let postDict = snapshot.value as! [String: AnyObject]
                     
                     let olTopicString = postDict["topic"] as! String
                     if olTopicString != "" {
-                        self.oneLiners = olTopicString.componentsSeparatedByString(",")
+                        self.oneLiners = olTopicString.components(separatedBy: ",")
                     }
                     print(snapshot.childrenCount)
                     
@@ -110,27 +113,27 @@ class oneLinerDisplay: UITableViewController {
                         
                         
                         if(self.chosenTopic != nil) {
-                            if (NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") != nil) {
+                            if (UserDefaults.standard.value(forKey: "chosenTopics") != nil) {
                                 //fetch existing chosen topics.
-                                var ct2 = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String] //there's already something here.
+                                var ct2 = UserDefaults.standard.value(forKey: "chosenTopics") as! [String] //there's already something here.
                                 //check if chosenTopics is already there in the array.
                                 if(ct2.contains(self.oneLiners[self.chosenTopic!]) == false) {
                                     ct2.append(self.oneLiners[self.chosenTopic!])
     
-                                    NSUserDefaults.standardUserDefaults().setValue(ct2, forKey: "chosenTopics") //write to NSUSerDefaults.
+                                    UserDefaults.standard.setValue(ct2, forKey: "chosenTopics") //write to NSUSerDefaults.
                                     //print( NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
                                 }
                             }
                             else {
                                 self.chosenTopics.append(self.oneLiners[self.chosenTopic!])
-                                NSUserDefaults.standardUserDefaults().setValue(self.chosenTopics, forKey: "chosenTopics")
+                                UserDefaults.standard.setValue(self.chosenTopics, forKey: "chosenTopics")
                                // print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
 
                             }
                         }
                         else {
-                            if (NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") == nil) {
-                            NSUserDefaults.standardUserDefaults().setValue(self.chosenTopics, forKey: "chosenTopics")
+                            if (UserDefaults.standard.value(forKey: "chosenTopics") == nil) {
+                            UserDefaults.standard.setValue(self.chosenTopics, forKey: "chosenTopics")
                             }
                             
                         }
@@ -138,7 +141,7 @@ class oneLinerDisplay: UITableViewController {
                 self.tableView.dataSource = self
                         self.tableView.reloadData()
                         self.animateTable()
-                        JDStatusBarNotification.showWithStatus("Done.",dismissAfter: 2.0)
+                        JDStatusBarNotification.show(withStatus: "Done.",dismissAfter: 2.0)
                         
                     }
                 }
@@ -150,72 +153,107 @@ class oneLinerDisplay: UITableViewController {
             DataService.showAlert(self)
             
         }
-        self.view.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        self.view.backgroundColor = UIColor.init(red: 244, green: 236, blue: 14, alpha: 1)
         self.tableView.delegate = nil
         self.tableView.dataSource = nil
         self.tableView.allowsMultipleSelection = false
-        JDStatusBarNotification.showWithStatus("Fetching topics.",dismissAfter: 2.0)
+        JDStatusBarNotification.show(withStatus: "Fetching topics.",dismissAfter: 2.0)
         
         
-        print(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics"))
+        print(UserDefaults.standard.value(forKey: "chosenTopics"))
         
         let image = UIImage(named: "logo_small")
         self.navigationItem.titleView = UIImageView(image: image)
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        imageView.contentMode = .ScaleAspectFit
+        imageView.contentMode = .scaleAspectFit
 
     }
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
       
         return self.oneLiners.count
     }
     
+    func swipeAction(_ sender:UIGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.ended {
+            let swipeLocation = sender.location(in: self.tableView)
+            if let swipedIndexPath = tableView.indexPathForRow(at: swipeLocation) {
+                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+                    print("Gesture recognized!")
+                }
+            }
+        }
+    }
+
+
    
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MGSwipeTableCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.contentView.backgroundColor = UIColor.init(hex: "#F4EC0E")
-        cell.accessoryView?.backgroundColor = UIColor.yellowColor()
+        cell.contentView.backgroundColor = UIColor.init(red: 244, green: 236, blue: 14, alpha: 1)
+        cell.accessoryView?.backgroundColor = UIColor.yellow
         cell.textLabel?.font = UIFont(name: "Avenir-Light", size: 24.0)
         
-        //configure right buttons
-        cell.rightSwipeSettings.transition = .Drag
-        cell.rightExpansion.animationDuration = 2
-        cell.rightExpansion.fillOnTrigger = true
-        cell.rightExpansion.expansionColor = UIColor.yellowColor()
-        cell.rightExpansion.buttonIndex = 0
+        //Rework the cell swiping without any external libraries that break.
+//        let cSelector : Selector = "swipeAction"
         
-        let swipeToCard = MGSwipeButton(title: "",icon: DataService.resizeImage(UIImage(named: "swipeArrow")!, newWidth: 24),backgroundColor: UIColor.yellowColor(), callback: {
-            (sender: MGSwipeTableCell!) -> Bool in
-            
-            let indexPath = self.tableView.indexPathForCell(sender)
-            self.performSegueWithIdentifier("oneLinerShow", sender: indexPath)
-            return true
-        })
+        cell.isUserInteractionEnabled = true
         
-        swipeToCard.tintColor = UIColor.blackColor()
+//        for recognizer in cell.contentView.gestureRecognizers! {
+//            cell.contentView.removeGestureRecognizer(recognizer)
+//        }
         
-        cell.rightButtons = [swipeToCard]
         
-        cell.textLabel?.text = oneLiners[indexPath.row]
+        
+        cell.contentView.tag = indexPath.row
+
+        
+//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+//        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+//        cell.addGestureRecognizer(rightSwipe) //add gesture recognizer to the cell.
+        
+        
+        
+        
+//        //configure right buttons
+//        cell.rightSwipeSettings.transition = .drag
+//        cell.rightExpansion.animationDuration = 2
+//        cell.rightExpansion.fillOnTrigger = true
+//        cell.rightExpansion.expansionColor = UIColor.yellow
+//        cell.rightExpansion.buttonIndex = 0
+//        
+        
+//        
+//        let swipeToCard = MGSwipeButton(title: "", icon: DataService.resizeImage(UIImage(named: "swipeArrow")!, newWidth: 24), backgroundColor: UIColor.yellow) { (cell) -> Bool in
+//            let indexPath = self.tableView.indexPath(for:cell!)
+//            self.performSegue(withIdentifier: "oneLinerShow", sender: indexPath)
+//            return true
+//
+//        }
+        
+        
+//        swipeToCard?.tintColor = UIColor.black
+        
+//        cell.rightButtons = [swipeToCard]
+        
+        cell.textLabel?.text = oneLiners[(indexPath as NSIndexPath).row]
        // let getOption = NSUserDefaults.standardUserDefaults().valueForKey("chosenOption") as? Int
 //        print(getTopics)
         
         //LOGIC: Here. You fetch the latest and greatest array of ChosenTopics. You simply check if there's something in there from the oneLiners array and the chosenTopics array. And you rain in the check marks. else it's the tabs.
-        if(NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") != nil) {
-            let getTopics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
+        if(UserDefaults.standard.value(forKey: "chosenTopics") != nil) {
+            let getTopics = UserDefaults.standard.value(forKey: "chosenTopics") as! [String]
             print(getTopics)
             
-            if getTopics.contains(oneLiners[indexPath.row]) {
+            if getTopics.contains(oneLiners[(indexPath as NSIndexPath).row]) {
                 var imageView : UIImageView
                 imageView  = UIImageView(frame:CGRect(x: 0, y: 0, width: 30, height: 30))
                 imageView.image = UIImage(named:"Tick")
                 cell.accessoryView = imageView
-                cell.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
+                cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 24.0)
             }
             else {
                 var imageView : UIImageView
@@ -232,64 +270,67 @@ class oneLinerDisplay: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  
+   
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        FIRAnalytics.logEventWithName(kFIREventSelectContent, parameters: [kFIRParameterContentType: oneLiners[indexPath.row]])
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [kFIRParameterContentType: oneLiners[(indexPath as NSIndexPath).row] as NSObject])
         
         //Local Variables
         
         let indexPath = tableView.indexPathForSelectedRow
-        let cell = tableView.cellForRowAtIndexPath(indexPath!)
-        let optionChecked = indexPath?.row
+        let cell = tableView.cellForRow(at: indexPath!)
+        let optionChecked = (indexPath as NSIndexPath?)?.row
 
-        cell?.accessoryView?.superview?.backgroundColor = UIColor.init(hex: "#F4EC0E")
+        cell?.accessoryView?.superview?.backgroundColor = UIColor.init(red: 244, green: 236, blue: 14, alpha: 1)
 
         //cell?.accessoryType = .Checkmark
-        cell!.textLabel?.font = UIFont.boldSystemFontOfSize(24.0)
+        cell!.textLabel?.font = UIFont.boldSystemFont(ofSize: 24.0)
 
         
         let topic = oneLiners[optionChecked!] //topic is the cell I just chose.
         
         //LOG: Check if topic is already there in selected_topics. If it's there, remove it, save and reload table. Else, append, save and reload data.
         
-        var selected_Topics = NSUserDefaults.standardUserDefaults().valueForKey("chosenTopics") as! [String]
+        var selected_Topics = UserDefaults.standard.value(forKey: "chosenTopics") as! [String]
         if(selected_Topics.contains(oneLiners[optionChecked!])) {
-            FIRMessaging.messaging().unsubscribeFromTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
-            let getIndex = selected_Topics.indexOf(oneLiners[optionChecked!]) //get index of the element within selected_Topics
-            selected_Topics.removeAtIndex(getIndex!) //remove that element.
+            FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/\(topic.replacingOccurrences(of: " ", with: ""))")
+            let getIndex = selected_Topics.index(of: oneLiners[optionChecked!]) //get index of the element within selected_Topics
+            selected_Topics.remove(at: getIndex!) //remove that element.
             
-            NSUserDefaults.standardUserDefaults().setValue(selected_Topics, forKey: "chosenTopics")
+            UserDefaults.standard.setValue(selected_Topics, forKey: "chosenTopics")
             print("Unsubscribed from \(topic), here's the latest array: \(selected_Topics)")
-            JDStatusBarNotification.showWithStatus("Succesfully unsubscribed from topic!", dismissAfter: 2.0, styleName: "JDStatusBarStyleDark")
+            JDStatusBarNotification.show(withStatus: "Succesfully unsubscribed from topic!", dismissAfter: 2.0, styleName: "JDStatusBarStyleDark")
             
             tableView.reloadData()
         }
         
         else {
-        FIRMessaging.messaging().subscribeToTopic("/topics/\(topic.stringByReplacingOccurrencesOfString(" ", withString: ""))")
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/\(topic.replacingOccurrences(of: " ", with: ""))")
         print("Subscribed to the \(topic). Send me PNs?")
-        JDStatusBarNotification.showWithStatus("Topic selected! You may now close the app. :)", dismissAfter: 4.0, styleName: "JDStatusBarStyleDark")
+        JDStatusBarNotification.show(withStatus: "Topic selected! You may now close the app. :)", dismissAfter: 4.0, styleName: "JDStatusBarStyleDark")
         selected_Topics.append(topic)
-        NSUserDefaults.standardUserDefaults().setValue(selected_Topics, forKey: "chosenTopics")
+        UserDefaults.standard.setValue(selected_Topics, forKey: "chosenTopics")
         tableView.reloadData()
         }
         
         
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let indexPath = tableView.indexPathForSelectedRow
-        let cell = tableView.cellForRowAtIndexPath(indexPath!)
+        let cell = tableView.cellForRow(at: indexPath!)
         print("De-selected row \(cell?.textLabel?.text)")
         }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "oneLinerShow" {
                 let indexPath = sender! //this is how you send indexPath!
-                let destinationViewController = segue.destinationViewController as! dailyOneLiner
-                destinationViewController.cellClicked = indexPath.row
+                let destinationViewController = segue.destination as! dailyOneLiner
+                destinationViewController.cellClicked = (indexPath as AnyObject).row
                 destinationViewController.olTopics = oneLiners
             
         }

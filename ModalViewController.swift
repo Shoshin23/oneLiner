@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Spring
 
 
 class ModalViewController: UIViewController {
@@ -15,18 +14,18 @@ class ModalViewController: UIViewController {
     
     
     
-    @IBAction func dismissVC(sender: UIButton) {
+    @IBAction func dismissVC(_ sender: UIButton) {
         
         let presentingViewController: UIViewController! = self.presentingViewController
         
-        self.dismissViewControllerAnimated(false) {
-            presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: false) {
+            presentingViewController.dismiss(animated: true, completion: nil)
         }
     }
     
-    @IBAction func aboutButton(sender: UIButton) {
+    @IBAction func aboutButton(_ sender: UIButton) {
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.lotus-bee.com")!)
+        UIApplication.shared.openURL(URL(string: "http://www.lotus-bee.com")!)
 
         
     }

@@ -11,7 +11,6 @@
 import UIKit
 import Firebase
 import Social
-import Spring
 
 class ShareViewController: UIViewController {
     
@@ -26,23 +25,23 @@ class ShareViewController: UIViewController {
     @IBOutlet var shareContent: UITextView!
     //obtain selectedIndex here 
     var selectedIndex:Int!
-    var appDel : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    var appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBAction func showAlert() {
-        let alertController = UIAlertController(title: "", message: "Your 1Liner is copied to the clipboard!", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "", message: "Your 1Liner is copied to the clipboard!", preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func share(shareText shareText:String?,shareImage:UIImage?){
+    func share(shareText:String?,shareImage:UIImage?){
         
         var objectsToShare = [AnyObject]()
         
         if let shareTextObj = shareText{
-            objectsToShare.append(shareTextObj)
+            objectsToShare.append(shareTextObj as AnyObject)
         }
         
         if let shareImageObj = shareImage{
@@ -53,35 +52,35 @@ class ShareViewController: UIViewController {
             let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             
-            presentViewController(activityViewController, animated: true, completion: nil)
+            present(activityViewController, animated: true, completion: nil)
         }
         else{
             print("There is nothing to share")
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
         
     }
 
     
-    @IBAction func back(sender: AnyObject) {
-        navigationController!.popViewControllerAnimated(true)
+    @IBAction func back(_ sender: AnyObject) {
+        navigationController!.popViewController(animated: true)
         
     }
     
-    @IBAction func shareButton(sender: UIButton) {
+    @IBAction func shareButton(_ sender: UIButton) {
         
-        FIRAnalytics.logEventWithName(kFIREventShare, parameters: [kFIRParameterContentType:"share"]) //Log share event.
+        FIRAnalytics.logEvent(withName: kFIREventShare, parameters: [kFIRParameterContentType:"share" as NSObject]) //Log share event.
         
-        shareBtn.hidden = true
-        backBtn.hidden = true
+        shareBtn.isHidden = true
+        backBtn.isHidden = true
         let img = view.pb_takeSnapshot()
         share(shareText: "#1Liner", shareImage: img)
-        shareBtn.hidden = false
-        backBtn.hidden = false
+        shareBtn.isHidden = false
+        backBtn.isHidden = false
     
             }
     
@@ -92,7 +91,7 @@ class ShareViewController: UIViewController {
         //print("In shareVC.")
        // print("From shareVC, we can read the payload now! \(appDel.payload!)")
        // view.backgroundColor = UIColor(red:0.96, green:0.93, blue:0.05, alpha:1.0)
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
         if appDel.payloadTopic != nil {
             backgroundImg.image = UIImage(named: appDel.payloadTopic as! String)
@@ -102,7 +101,7 @@ class ShareViewController: UIViewController {
             backgroundImg.image = UIImage(named: "Motivation")
         }
         
-        FIRAnalytics.logEventWithName(kFIREventViewItem, parameters: [kFIRParameterContentType:"cardView"]) //log when someone comes into the shareVC.
+        FIRAnalytics.logEvent(withName: kFIREventViewItem, parameters: [kFIRParameterContentType:"cardView" as NSObject]) //log when someone comes into the shareVC.
         
         if appDel.payload != nil {
         self.shareContent.text = appDel.payload! as String
@@ -114,7 +113,7 @@ class ShareViewController: UIViewController {
         } else {
             self.sourceName.text = " "
         }
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
     

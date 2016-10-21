@@ -84,16 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Armchair/Armchair.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/BWSwipeRevealCell/BWSwipeRevealCell.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JDStatusBarNotification/JDStatusBarNotification.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Spring/Spring.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Armchair/Armchair.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/BWSwipeRevealCell/BWSwipeRevealCell.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JDStatusBarNotification/JDStatusBarNotification.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Spring/Spring.framework"
 fi

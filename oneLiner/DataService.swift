@@ -11,26 +11,26 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 
-public class DataService {
+open class DataService {
     
     //Show Alert regarding the internet.
-    class func showAlert(viewController:UIViewController) -> Void {
-        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet.", preferredStyle: .Alert)
+    class func showAlert(_ viewController:UIViewController) -> Void {
+        let alertController = UIAlertController(title: "No Internet Connection", message: "Please make sure your device is connected to the Internet.", preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         
-        viewController.presentViewController(alertController, animated: true, completion: nil)
+        viewController.present(alertController, animated: true, completion: nil)
 
         
     }
     
     //Configure a Material Design Card.
-    class func configureCard (card:UIView) -> Void {
+    class func configureCard (_ card:UIView) -> Void {
         card.layer.cornerRadius = 2
-        card.layer.borderColor = UIColor.blackColor().CGColor
+        card.layer.borderColor = UIColor.black.cgColor
         card.layer.borderWidth = 0.25
-        card.layer.shadowColor = UIColor.blackColor().CGColor
+        card.layer.shadowColor = UIColor.black.cgColor
         card.layer.shadowOpacity = 0.8
         card.layer.shadowRadius = 6
         card.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -39,16 +39,16 @@ public class DataService {
         
     }
 
-    class func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    class func resizeImage(_ image: UIImage, newWidth: CGFloat) -> UIImage {
         
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
     
 
