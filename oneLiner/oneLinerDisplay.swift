@@ -269,11 +269,11 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
         //                }
         //            }
         //        }
-        print(sender.view?.tag)
+        print(sender.view!.tag)
+        self.performSegue(withIdentifier: "oneLinerShow", sender: sender.view!.tag)
         switch sender.direction {
         case UISwipeGestureRecognizerDirection.right:
             print("SWIPED DERECHA")
-            
         default:
             print("DEFAULT")
         }
@@ -335,9 +335,9 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "oneLinerShow" {
-                let indexPath = sender! //this is how you send indexPath!
+//                let indexPath = sender! //this is how you send indexPath!
                 let destinationViewController = segue.destination as! dailyOneLiner
-                destinationViewController.cellClicked = (indexPath as AnyObject).row
+                destinationViewController.cellClicked = sender as! Int
                 destinationViewController.olTopics = oneLiners
             
         }
