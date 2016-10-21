@@ -90,9 +90,6 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
 //        Armchair.appID("1127228637")  //Ask for a review. Set it to default.
         //Check if chosenTopic is not nil. If not, then add it to the array of chosenTopics. Add some backwards compatability between 1.1 and 1.2
         
-       self.tableView.addGestureRecognizer(
-            UITapGestureRecognizer(target: self, action: #selector(swipeAction(_:))))
-        
         if Reachability.isConnectedToNetwork() == true {
             //fetch 1Liners from Firebase.
             olRef = FIRDatabase.database().reference()
@@ -105,9 +102,9 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
                         self.oneLiners = olTopicString.components(separatedBy: ",")
                     }
                     print(snapshot.childrenCount)
-                    
+                    //
                     if self.oneLiners.count >= Int(snapshot.childrenCount)  {
-                        print(self.oneLiners.count)
+                        //print(self.oneLiners.count)
                         
                         //LOGIC: Add chosenTopic to the array. This ensures some kind of backward compatibility with previous versions. You check if chosenTopic is part of the existing array of 'ChosenTopics'. If not, you add it. Else you you let it be.
                         
@@ -160,7 +157,7 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
         JDStatusBarNotification.show(withStatus: "Fetching topics.",dismissAfter: 2.0)
         
         
-        print(UserDefaults.standard.value(forKey: "chosenTopics"))
+        //print(UserDefaults.standard.value(forKey: "chosenTopics"))
         
         let image = UIImage(named: "logo_small")
         self.navigationItem.titleView = UIImageView(image: image)
@@ -176,16 +173,7 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
         return self.oneLiners.count
     }
     
-    func swipeAction(_ sender:UIGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.ended {
-            let swipeLocation = sender.location(in: self.tableView)
-            if let swipedIndexPath = tableView.indexPathForRow(at: swipeLocation) {
-                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
-                    print("Gesture recognized!")
-                }
-            }
-        }
-    }
+ 
 
 
    
@@ -205,15 +193,16 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
 //        for recognizer in cell.contentView.gestureRecognizers! {
 //            cell.contentView.removeGestureRecognizer(recognizer)
 //        }
-        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
+//        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        cell.contentView.addGestureRecognizer(rightSwipe) //add gesture recognizer to the cell's contentView.
         
         
         cell.contentView.tag = indexPath.row
+        print("Cell tag: \(cell.contentView.tag)")
 
         
-//        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction))
-//        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
-//        cell.addGestureRecognizer(rightSwipe) //add gesture recognizer to the cell.
+
         
         
         
@@ -271,6 +260,24 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
     }
     
   
+    func swipeAction(_ sender:UISwipeGestureRecognizer) {
+        //        if sender.state == UIGestureRecognizerState.ended {
+        //            let swipeLocation = sender.location(in: self.tableView)
+        //            if let swipedIndexPath = tableView.indexPathForRow(at: swipeLocation) {
+        //                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+        //                    print("Gesture recognized!")
+        //                }
+        //            }
+        //        }
+        print(sender.view?.tag)
+        switch sender.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            print("SWIPED DERECHA")
+            
+        default:
+            print("DEFAULT")
+        }
+    }
    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
