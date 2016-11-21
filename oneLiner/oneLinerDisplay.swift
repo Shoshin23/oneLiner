@@ -90,6 +90,7 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
 //        Armchair.appID("1127228637")  //Ask for a review. Set it to default.
         //Check if chosenTopic is not nil. If not, then add it to the array of chosenTopics. Add some backwards compatability between 1.1 and 1.2
         
+
         if Reachability.isConnectedToNetwork() == true {
             //fetch 1Liners from Firebase.
             olRef = FIRDatabase.database().reference()
@@ -180,6 +181,8 @@ class oneLinerDisplay: UITableViewController,MGSwipeTableCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        self.tableView.backgroundColor = UIColor.init(red: 244, green: 236, blue: 14, alpha: 1)
         
         cell.contentView.backgroundColor = UIColor.init(red: 244, green: 236, blue: 14, alpha: 1)
         cell.accessoryView?.backgroundColor = UIColor.yellow
