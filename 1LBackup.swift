@@ -28,7 +28,7 @@
 //    var chosenTopic = UserDefaults.standard.value(forKey: "chosenOption") as? Int
 //    
 //    
-//    // Animate table method.
+//    // Animat e table method.
 //    //  ref: Appcoda tutorial
 //    
 //    func animateTable() {
