@@ -21,13 +21,13 @@
 		30D32BA41D1D543B004685FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D32BA31D1D543B004685FE /* Assets.xcassets */; };
 		30D50BB51D145CAD00E878AD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D50BB41D145CAD00E878AD /* Reachability.swift */; };
 		30E64C661DE2F5F2001A53A0 /* 1LBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64C651DE2F5F2001A53A0 /* 1LBackup.swift */; };
+		30E64C681DE3712B001A53A0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E64C671DE3712B001A53A0 /* MenuViewController.swift */; };
 		30EF73861CDE863400423339 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73851CDE863400423339 /* AppDelegate.swift */; };
 		30EF738B1CDE863400423339 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF73891CDE863400423339 /* Main.storyboard */; };
 		30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30EF738C1CDE863400423339 /* oneLiner.xcdatamodeld */; };
 		30EF73931CDE863400423339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EF73911CDE863400423339 /* LaunchScreen.storyboard */; };
 		30EF739E1CDE863400423339 /* oneLinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF739D1CDE863400423339 /* oneLinerTests.swift */; };
 		30EF73A91CDE863400423339 /* oneLinerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73A81CDE863400423339 /* oneLinerUITests.swift */; };
-		30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */; };
 		30F10EE21D1BB7E900E972CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F10EE11D1BB7E900E972CE /* GoogleService-Info.plist */; };
 		397143B6F211D6AA1CB50C42 /* Pods_oneLinerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66559A754A39DDFCB6F6EB71 /* Pods_oneLinerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +62,7 @@
 		30D32BA31D1D543B004685FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30D50BB41D145CAD00E878AD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = ../Reachability.swift; sourceTree = "<group>"; };
 		30E64C651DE2F5F2001A53A0 /* 1LBackup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = 1LBackup.swift; path = ../1LBackup.swift; sourceTree = "<group>"; };
+		30E64C671DE3712B001A53A0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ../MenuViewController.swift; sourceTree = "<group>"; };
 		30EF73821CDE863300423339 /* 1Liner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1Liner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73851CDE863400423339 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30EF738A1CDE863400423339 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		30EF73A41CDE863400423339 /* oneLinerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = oneLinerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EF73A81CDE863400423339 /* oneLinerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oneLinerUITests.swift; sourceTree = "<group>"; };
 		30EF73AA1CDE863400423339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oneLinerDisplay.swift; sourceTree = "<group>"; };
 		30F10EE11D1BB7E900E972CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C4F87B09C7AC73AC35FD101 /* Pods-oneLinerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneLinerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneLinerTests/Pods-oneLinerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4002C751AC7922F6AD302A68 /* Pods_oneLinerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oneLinerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,8 +132,8 @@
 				3043865A1D1AC14400D0802C /* WalkthroughPageViewController.swift */,
 				304386581D1ABBC500D0802C /* WalkthroughContentViewController.swift */,
 				30BBC3431CE0E20900BA1D78 /* ShareViewController.swift */,
+				30E64C671DE3712B001A53A0 /* MenuViewController.swift */,
 				30AE4E491D3F99B5008CCBDE /* dailyOneLiner.swift */,
-				30EF73B61CDE892E00423339 /* oneLinerDisplay.swift */,
 				30E64C651DE2F5F2001A53A0 /* 1LBackup.swift */,
 			);
 			name = Controllers;
@@ -511,8 +511,8 @@
 			files = (
 				300459A11CE3940200D90B5A /* Topics.swift in Sources */,
 				30776B2C1D23BDF40067AFEA /* ModalPopovers.swift in Sources */,
-				30EF73B71CDE892E00423339 /* oneLinerDisplay.swift in Sources */,
 				3043865B1D1AC14600D0802C /* WalkthroughPageViewController.swift in Sources */,
+				30E64C681DE3712B001A53A0 /* MenuViewController.swift in Sources */,
 				30AE4E4A1D3F99B5008CCBDE /* dailyOneLiner.swift in Sources */,
 				3065424A1D1C136E005004FF /* ModalViewController.swift in Sources */,
 				30EF738E1CDE863400423339 /* oneLiner.xcdatamodeld in Sources */,

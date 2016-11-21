@@ -10,6 +10,7 @@ pod 'Firebase/Messaging'
 pod 'Firebase/Database'
 pod 'JDStatusBarNotification'
 pod 'MGSwipeTableCell'
+pod 'Material', '~> 2.0'
 
 
 end
