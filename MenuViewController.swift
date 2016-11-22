@@ -19,7 +19,9 @@ class MenuViewController: UIViewController {
     
     @IBAction func muteTapped(_ sender: Any) {
         
-        
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/RAJINI")
+        print("Subscribed to notifications.")
+
         
         let dateSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         dateSheet.addAction(UIAlertAction(title: "1 Day", style: .default, handler: nil))
@@ -37,8 +39,6 @@ class MenuViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         print("In MenuViewController. Welcome to 2.0")
-        FIRMessaging.messaging().subscribe(toTopic: "ALL")
-        print("Subscribed to notifications.")
     }
 
     override func didReceiveMemoryWarning() {
