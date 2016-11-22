@@ -7,9 +7,25 @@
 //
 
 import UIKit
+import Material
 
 class MenuViewController: UIViewController {
 
+    @IBOutlet weak var muteButton: FlatButton!
+    
+    
+    @IBAction func muteTapped(_ sender: Any) {
+        
+        let dateSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        dateSheet.addAction(UIAlertAction(title: "1 Day", style: .default, handler: nil))
+        dateSheet.addAction(UIAlertAction(title: "1 Week", style: .default, handler: nil))
+        dateSheet.addAction(UIAlertAction(title: "1 Year", style: .default, handler: nil))
+        dateSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+
+        present(dateSheet, animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
