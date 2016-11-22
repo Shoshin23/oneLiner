@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,10 +34,10 @@ extension UINavigationController {
     /// Device status bar style.
     open var statusBarStyle: UIStatusBarStyle {
         get {
-            return Device.statusBarStyle
+            return Application.statusBarStyle
         }
         set(value) {
-            Device.statusBarStyle = value
+            Application.statusBarStyle = value
         }
     }
 }
@@ -118,7 +118,7 @@ open class NavigationController: UINavigationController {
         
         view.clipsToBounds = true
 		view.backgroundColor = .white
-        view.contentScaleFactor = Device.scale
+        view.contentScaleFactor = Screen.scale
         
         // This ensures the panning gesture is available when going back between views.
 		if let v = interactivePopGestureRecognizer {
@@ -141,7 +141,7 @@ extension NavigationController: UINavigationBarDelegate {
         if let v = navigationBar as? NavigationBar {
             item.backButton.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
             item.backButton.image = v.backButtonImage
-            item.leftViews.append(item.backButton)
+            item.leftViews.insert(item.backButton, at: 0)
             v.layoutNavigationItem(item: item)
         }
         return true

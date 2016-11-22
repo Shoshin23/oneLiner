@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,6 +71,8 @@ public enum AnimationTimingFunction: Int {
  */
 public func AnimationTimingFunctionToValue(function: AnimationTimingFunction) -> CAMediaTimingFunction {
     switch function {
+    case .default:
+        return CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
     case .linear:
         return CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     case .easeIn:
@@ -79,12 +81,10 @@ public func AnimationTimingFunctionToValue(function: AnimationTimingFunction) ->
         return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
     case .easeInEaseOut:
         return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-    case .default:
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
     }
 }
 
-public typealias AnimationDelayCancelBlock = (Bool) -> Void
+public typealias MotionDelayCancelBlock = (Bool) -> Void
 
 public struct Motion {
 	/**
@@ -95,15 +95,15 @@ public struct Motion {
      the animations have completed.
      */
     @discardableResult
-    public static func delay(time: TimeInterval, execute block: @escaping () -> Void) -> AnimationDelayCancelBlock? {
+    public static func delay(time: TimeInterval, execute block: @escaping () -> Void) -> MotionDelayCancelBlock? {
 		
 		func asyncAfter(completion: @escaping () -> Void) {
 			DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: completion)
         }
 		
-		var cancelable: AnimationDelayCancelBlock?
+		var cancelable: MotionDelayCancelBlock?
 		
-		let delayed: AnimationDelayCancelBlock = {
+		let delayed: MotionDelayCancelBlock = {
 			if !$0 {
 				DispatchQueue.main.async(execute: block)
 			}
@@ -121,14 +121,13 @@ public struct Motion {
 	}
 	
 	/**
-     Cancels the delayed AnimationDelayCancelBlock.
-     - Parameter delayed completion: An AnimationDelayCancelBlock.
+     Cancels the delayed MotionDelayCancelBlock.
+     - Parameter delayed completion: An MotionDelayCancelBlock.
      */
-	public static func cancel(delayed completion: AnimationDelayCancelBlock) {
+	public static func cancel(delayed completion: MotionDelayCancelBlock) {
 		completion(true)
 	}
 
-	
 	/**
      Disables the default animations set on CALayers. 
      - Parameter animations: A callback that wraps the animations to disable.
@@ -141,10 +140,11 @@ public struct Motion {
      Runs an animation with a specified duration.
      - Parameter duration: An animation duration time.
      - Parameter animations: An animation block.
+     - Parameter timingFunction: An AnimationTimingFunction value.
      - Parameter completion: A completion block that is executed once
      the animations have completed.
      */
-	public static func animate(duration: CFTimeInterval, animations: (() -> Void), completion: (() -> Void)? = nil) {
+	public static func animate(duration: CFTimeInterval, timingFunction: AnimationTimingFunction = .easeInEaseOut, animations: (() -> Void), completion: (() -> Void)? = nil) {
 		CATransaction.begin()
 		CATransaction.setAnimationDuration(duration)
 		CATransaction.setCompletionBlock(completion)
@@ -156,16 +156,17 @@ public struct Motion {
 	/**
      Creates a CAAnimationGroup.
      - Parameter animations: An Array of CAAnimation objects.
+     - Parameter timingFunction: An AnimationTimingFunction value.
      - Parameter duration: An animation duration time for the group.
      - Returns: A CAAnimationGroup.
      */
-	public static func animate(group animations: [CAAnimation], duration: CFTimeInterval = 0.5) -> CAAnimationGroup {
+    public static func animate(group animations: [CAAnimation], timingFunction: AnimationTimingFunction = .easeInEaseOut, duration: CFTimeInterval = 0.5) -> CAAnimationGroup {
 		let group = CAAnimationGroup()
 		group.fillMode = AnimationFillModeToValue(mode: .forwards)
 		group.isRemovedOnCompletion = false
 		group.animations = animations
 		group.duration = duration
-		group.timingFunction = AnimationTimingFunctionToValue(function: .easeInEaseOut)
+		group.timingFunction = AnimationTimingFunctionToValue(function: timingFunction)
 		return group
 	}
 	

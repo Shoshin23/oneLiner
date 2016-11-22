@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import CoreData
 import Firebase
 import FirebaseInstanceID
@@ -53,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Create the 'Share' Notification Category. Swipe right and I see 'Share'.
         
+        
+        
+        
         if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil {
             print("From launchOptions push notification.")
             payload =   launchOptions![UIApplicationLaunchOptionsKey.remoteNotification] as? NSString
@@ -63,26 +67,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootVC.pushViewController(shareVC, animated: true)
             
         }
-
-        let notificationShare :UIMutableUserNotificationAction =
-            UIMutableUserNotificationAction()
-        notificationShare.identifier = "SHARE_IDENTIFIER"
-        notificationShare.title = "👍 Share" //some inspiration from the Quartz App. TODO: Find a way to make it new everyday.
-        notificationShare.isDestructive = false
-        notificationShare.activationMode = .background
-        
-        //the 'Share Category'
-        
-        let notificationCategory: UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        notificationCategory.identifier = "SHARE_CATEGORY"
-        notificationCategory.setActions([notificationShare], for: .minimal)
-        
-        
-        
-        
-        let settings: UIUserNotificationSettings =
-        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories:[notificationCategory])
-        UIApplication.shared.registerUserNotificationSettings(settings)
+        if #available(iOS 10.0, *) {
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+            
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            // For iOS 10 data message (sent via FCM)
+            FIRMessaging.messaging().remoteMessageDelegate = self
+            
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
         UIApplication.shared.registerForRemoteNotifications()
         FIRApp.configure()  //Configure Firebase according to the new
         
@@ -178,13 +178,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 
                 
-                                let rootVC = self.window?.rootViewController as! UINavigationController
+                                let rootVC = self.window?.rootViewController as! MenuViewController
                 //
                 let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let shareVC = mainStoryboard.instantiateViewController(withIdentifier: "ShareViewController") as! ShareViewController
                 
-                rootVC.pushViewController(shareVC, animated: true)
-            }
+                rootVC.present(shareVC, animated: true, completion: nil)            }
         }
         
     }
@@ -225,6 +224,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
         }
+// [START ios_10_message_handling]
+@available(iOS 10, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        // Print full message.
+        print(userInfo)
+        redirectToView(userInfo)
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        print("Message ID for ios10 people.: \(userInfo["gcm.message_id"]!)")
+        // Print full message.
+        print(userInfo)
+        redirectToView(userInfo)
+
+    }
+}
+//[START ios_10_data_message_handling]
+extension AppDelegate:FIRMessagingDelegate {
+    // Receive data message on iOS 10 devices while app is in the foreground.
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        print(remoteMessage.appData)
+}
+}
+// [END ios_10_message_handling]
+
 
 
 

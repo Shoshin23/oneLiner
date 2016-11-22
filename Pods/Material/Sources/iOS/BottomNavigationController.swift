@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -140,7 +140,7 @@ open class BottomNavigationController: UITabBarController, UITabBarControllerDel
      */
 	open func prepare() {
 		view.clipsToBounds = true
-		view.contentScaleFactor = Device.scale
+		view.contentScaleFactor = Screen.scale
 		view.backgroundColor = Color.white
         delegate = self
         prepareTabBar()

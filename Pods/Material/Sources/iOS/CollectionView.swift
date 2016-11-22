@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -119,7 +119,7 @@ open class CollectionView: UICollectionView {
      when subclassing.
      */
 	open func prepare() {
-		contentScaleFactor = Device.scale
+		contentScaleFactor = Screen.scale
 		backgroundColor = .clear
 		contentEdgeInsets = .zero
     }

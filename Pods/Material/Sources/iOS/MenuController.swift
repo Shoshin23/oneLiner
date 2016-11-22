@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ extension UIViewController {
 
 open class MenuController: RootController {
 	/// Reference to the MenuView.
-    open private(set) lazy var menu: Menu = Menu()
+    open fileprivate(set) var menu = Menu()
 	
 	/**
      Opens the menu with a callback.

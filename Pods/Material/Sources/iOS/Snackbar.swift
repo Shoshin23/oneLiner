@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -104,7 +104,7 @@ open class Snackbar: Bar {
     
     /// Prepares the textLabel.
     private func prepareTextLabel() {
-        textLabel.contentScaleFactor = Device.scale
+        textLabel.contentScaleFactor = Screen.scale
         textLabel.font = RobotoFont.medium(with: 14)
         textLabel.textAlignment = .left
         textLabel.textColor = Color.white

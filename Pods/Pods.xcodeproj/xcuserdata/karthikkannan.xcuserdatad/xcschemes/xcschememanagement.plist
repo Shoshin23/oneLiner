@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JDStatusBarNotification.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,22 +52,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04693735BCFA74B873DE04047ECC5FBA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>08C670F14C5E0F92D52B4FD40051294F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1B006392A6DC63E06AC81DE6F08803B1</key>
+		<key>28B32B71E638F3A5D3ED8826A1D0C0DC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>35FAFEC4CC2C2EBECEE1C9DCC300D424</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3EA3DE68988F01892E6AC1BF64B53C18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96708C6DAC0B96114C71518EA11A8C9A</key>
+		<key>8F26DCCBCE3E1AEC2913736119CB1654</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A39AE9B86CF2AEB697C25DF98BAFEBF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>A5A77A773B54F8686BED191F7DF75BC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC911AFCCCAA952028F27336441D755A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

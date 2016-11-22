@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ public enum DividerAlignment: Int {
     case right
 }
 
-open class Divider {
+public struct Divider {
     /// A reference to the UIView.
     internal weak var view: UIView?
     
@@ -46,28 +46,28 @@ open class Divider {
     internal var line: UIView?
     
     /// A reference to the height.
-    open var thickness: CGFloat {
+    public var thickness: CGFloat {
         didSet {
             reload()
         }
     }
     
     /// A preset wrapper around contentEdgeInsets.
-    open var contentEdgeInsetsPreset = EdgeInsetsPreset.none {
+    public var contentEdgeInsetsPreset = EdgeInsetsPreset.none {
         didSet {
             contentEdgeInsets = EdgeInsetsPresetToValue(preset: contentEdgeInsetsPreset)
         }
     }
     
     /// A reference to EdgeInsets.
-    open var contentEdgeInsets = EdgeInsets.zero {
+    public var contentEdgeInsets = EdgeInsets.zero {
         didSet {
             reload()
         }
     }
     
     /// A UIColor.
-    open var color: UIColor? {
+    public var color: UIColor? {
         get {
             return line?.backgroundColor
         }
@@ -88,7 +88,7 @@ open class Divider {
     }
     
     /// A reference to the dividerAlignment.
-    open var alignment = DividerAlignment.bottom {
+    public var alignment = DividerAlignment.bottom {
         didSet {
             reload()
         }
@@ -105,7 +105,7 @@ open class Divider {
     }
     
     /// Lays out the divider.
-    open func reload() {
+    public func reload() {
         guard let l = line, let v = view else {
             return
         }

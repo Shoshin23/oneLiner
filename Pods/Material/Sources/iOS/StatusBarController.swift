@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,11 @@ extension UIViewController {
 
 open class StatusBarController: RootController {
 	/// A reference to the statusBar.
-	open private(set) lazy var statusBar = View()
+    open fileprivate(set) var statusBar = UIView()
 	
+    /// A boolean that indicates to hide the statusBar on rotation.
+    open var shouldHideStatusBarOnRotation = true
+    
     open override var isStatusBarHidden: Bool {
         didSet {
             statusBar.isHidden = isStatusBarHidden
@@ -65,9 +68,12 @@ open class StatusBarController: RootController {
      */
 	open override func layoutSubviews() {
 		super.layoutSubviews()
+        if shouldHideStatusBarOnRotation {
+            statusBar.isHidden = Application.shouldStatusBarBeHidden
+        }
+        
         statusBar.width = view.width
-        statusBar.zPosition = Device.isLandscape && .phone == Device.userInterfaceIdiom ? 0 : 3000
-		rootViewController.view.frame = view.bounds
+        rootViewController.view.frame = view.bounds
 	}
 	
 	/**

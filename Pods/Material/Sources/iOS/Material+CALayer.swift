@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@
 
 import UIKit
 
-internal class MaterialLayer {
+internal struct MaterialLayer {
     /// A reference to the CALayer.
     internal weak var layer: CALayer?
     
@@ -258,9 +258,12 @@ extension CALayer {
      - Parameter animation: A CAAnimation instance.
      */
     open func animate(animation: CAAnimation) {
+        animation.delegate = self
+        
         if let a = animation as? CABasicAnimation {
             a.fromValue = (nil == presentation() ? self : presentation()!).value(forKeyPath: a.keyPath!)
         }
+        
         if let a = animation as? CAPropertyAnimation {
             add(a, forKey: a.keyPath!)
         } else if let a = animation as? CAAnimationGroup {
@@ -279,20 +282,29 @@ extension CALayer {
      if interrupted.
      */
     open func animationDidStop(_ animation: CAAnimation, finished flag: Bool) {
-        if let a = animation as? CAPropertyAnimation {
-            if let b = a as? CABasicAnimation {
-                if let v = b.toValue {
-                    if let k = b.keyPath {
-                        setValue(v, forKeyPath: k)
-                        removeAnimation(forKey: k)
-                    }
+        guard let a = animation as? CAPropertyAnimation else {
+            if let a = (animation as? CAAnimationGroup)?.animations {
+                for x in a {
+                    animationDidStop(x, finished: true)
                 }
             }
-        } else if let a = animation as? CAAnimationGroup {
-            for x in a.animations! {
-                animationDidStop(x, finished: true)
-            }
+            return
         }
+        
+        guard let b = a as? CABasicAnimation else {
+            return
+        }
+        
+        guard let v = b.toValue else {
+            return
+        }
+        
+        guard let k = b.keyPath else {
+            return
+        }
+        
+        setValue(v, forKeyPath: k)
+        removeAnimation(forKey: k)
     }
     
     /// Manages the layout for the shape of the view instance.
@@ -330,4 +342,9 @@ extension CALayer {
             animate(animation: a)
         }
     }
+}
+
+@available(iOS 10, *)
+extension CALayer: CAAnimationDelegate {
+    
 }

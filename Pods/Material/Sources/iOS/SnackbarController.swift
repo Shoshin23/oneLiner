@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.io>.
+ * Copyright (C) 2015 - 2016, Daniel Dahan and CosmicMind, Inc. <http://cosmicmind.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -91,7 +91,7 @@ extension UIViewController {
 
 open class SnackbarController: RootController {
     /// Reference to the Snackbar.
-    open private(set) lazy var snackbar: Snackbar = Snackbar()
+    open fileprivate(set) var snackbar = Snackbar()
     
     /// A boolean indicating if the Snacbar is animating.
     open internal(set) var isAnimating = false
@@ -107,7 +107,7 @@ open class SnackbarController: RootController {
      - Parameter status: A SnackbarStatus enum value.
      */
     @discardableResult
-    open func animate(snackbar status: SnackbarStatus, delay: TimeInterval = 0, animations: ((Snackbar) -> Void)? = nil, completion: ((Snackbar) -> Void)? = nil) -> AnimationDelayCancelBlock? {
+    open func animate(snackbar status: SnackbarStatus, delay: TimeInterval = 0, animations: ((Snackbar) -> Void)? = nil, completion: ((Snackbar) -> Void)? = nil) -> MotionDelayCancelBlock? {
         return Motion.delay(time: delay) { [weak self, status = status, animations = animations, completion = completion] in
             guard let s = self else {
                 return
