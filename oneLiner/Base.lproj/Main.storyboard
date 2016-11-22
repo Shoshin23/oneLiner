@@ -363,18 +363,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13n-Ou-zMa">
+                                <rect key="frame" x="0.0" y="93" width="375" height="262"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.92549019610000005" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">The new 1Liner App provides a carefully curated 1Liner for you twice a day. You’re now signed up for push notification. Go ahead and close the app, we will interact on the lock screen later in the day.
+
+However, when you are having really focused times and want to do away with the notification for a while, you can mute us temporarily.</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.92549019610000005" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="13n-Ou-zMa" firstAttribute="leading" secondItem="ioh-a5-VL4" secondAttribute="leading" id="1Wg-yC-81z"/>
+                            <constraint firstItem="13n-Ou-zMa" firstAttribute="top" secondItem="f2t-EK-VK2" secondAttribute="bottom" constant="1" id="IAF-qi-OIj"/>
                             <constraint firstItem="f2t-EK-VK2" firstAttribute="top" secondItem="ioh-a5-VL4" secondAttribute="top" id="ScN-Pg-08t"/>
                             <constraint firstItem="f2t-EK-VK2" firstAttribute="leading" secondItem="ioh-a5-VL4" secondAttribute="leading" id="dXm-Tn-Vvz"/>
                             <constraint firstAttribute="trailing" secondItem="f2t-EK-VK2" secondAttribute="trailing" id="j0k-R6-fbw"/>
+                            <constraint firstAttribute="trailing" secondItem="13n-Ou-zMa" secondAttribute="trailing" id="vLm-tJ-UsP"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNP-r3-J1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952.8" y="239.73013493253376"/>
+            <point key="canvasLocation" x="1948" y="236.13193403298354"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="dRw-h8-cFr">
